@@ -1,5 +1,5 @@
 guard 'livereload' do
-  watch(%r{_site/.+})
+  watch(%r{_site/.(css|js|html)})
 end
 
 guard :compass
