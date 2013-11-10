@@ -1,3 +1,5 @@
+require "zurb-foundation"
+
 sass_dir = "scss"
 css_dir = "css"
 images_dir = "images"

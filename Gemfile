@@ -7,6 +7,7 @@ group :development do
     gem "guard"
     gem "guard-coffeescript"
     gem "guard-compass"
+    gem "zurb-foundation"
     gem "guard-livereload"
     gem "guard-concat"
     gem "guard-uglify"
