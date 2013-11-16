@@ -2,6 +2,7 @@
 layout: post
 title:  "How to setup a free blog on Github using Jekyll"
 date:   2013-10-26 07:44:54
+author: Joseph Turner
 categories: github github-pages jekyll
 ---
 
