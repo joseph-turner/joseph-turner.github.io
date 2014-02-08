@@ -1,0 +1,44 @@
+// ============================================================================
+// Grid Placeholders
+// ============================================================================
+
+
+// Rows
+// ============================================================================
+%l-row {
+    @include grid-row();
+}
+
+header[role="banner"],
+main[role="main"],
+footer[role="contentinfo"] {
+    @extend %l-row;
+}
+
+
+
+// Columns
+// ============================================================================
+%l-col-full {
+    @include grid-column($columns: $total-columns);
+}
+
+%l-col-three-fourths {
+    @include grid-column($columns: $total-columns * .75);
+}
+
+%l-col-two-thirds {
+    @include grid-column($columns: $total-columns * .666666);
+}
+
+%l-col-half {
+    @include grid-column($columns: $total-columns * .5);
+}
+
+%l-col-third {
+    @include grid-column($columns: $total-columns * .333333);
+}
+
+%l-col-fourth {
+    @include grid-column($columns: $total-columns * .25);
+}

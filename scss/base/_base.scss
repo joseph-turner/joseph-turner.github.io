@@ -1,0 +1,23 @@
+*,
+*:before,
+*:after {
+    @include box-sizing(border-box);
+}
+
+nav {
+    & > ul,
+    & > ol {
+        @include clearfix;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        & > li {
+            float: left;
+        }
+    }
+}
+
+a {
+    @include transition();
+}

@@ -18,7 +18,7 @@
         <![endif]-->
 
         <header role="banner">
-            <h1><a href="/">{{ site.name }}</a></h1>
+            <h1><a href="/" role="link">{{ site.name }}</a></h1>
             <nav role="navigation">
                 <ul>
                     <li><a href="/" role="link">home</a></li>
@@ -32,18 +32,16 @@
             {{ content }}
 
         </main>
-        <footer>
+        <footer role="contentinfo">
+            <p vocab="http://schema.org/" typeof="Person">
+                <span property="name">Joseph Turner</span>
+                <span property="jobTitle">Front-end Developer</span>
+                <a href="mailto:iamjoeturner@gmail.com" property="email">iamjoeturner@gmail.com</span>
+            </p>
             <div>
                 <p>
-                    Joseph Turner<br />
-                    Front-end Developer<br />
-                    iamjoeturner@gmail.com
-                </p>
-            </div>
-            <div>
-                <p>
-                    <a href="https://github.com/joseph-turner">github.com/joseph-turner</a><br />
-                    <a href="https://twitter.com/josephturnerii">twitter.com/josephturnerii</a><br />
+                    <a href="https://github.com/joseph-turner" role="link">github.com/joseph-turner</a><br />
+                    <a href="https://twitter.com/josephturnerii" role="link">twitter.com/josephturnerii</a><br />
                 </p>
             </div>
         </footer>

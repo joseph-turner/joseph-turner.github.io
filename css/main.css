@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -435,4 +436,176 @@ meta.foundation-mq-medium {
 meta.foundation-mq-large {
   font-family: "only screen and (min-width:1440px)";
   width: 1440px;
+}
+
+/* line 3, ../scss/base/_base.scss */
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 9, ../scss/base/_base.scss */
+nav > ul, nav > ol {
+  *zoom: 1;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+/* line 121, ../scss/vendor/foundation/components/_global.scss */
+nav > ul:before, nav > ul:after, nav > ol:before, nav > ol:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../scss/vendor/foundation/components/_global.scss */
+nav > ul:after, nav > ol:after {
+  clear: both;
+}
+/* line 15, ../scss/base/_base.scss */
+nav > ul > li, nav > ol > li {
+  float: left;
+}
+
+/* line 21, ../scss/base/_base.scss */
+a {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* line 8, ../scss/layout/_grid.scss */
+header[role="banner"],
+main[role="main"],
+footer[role="contentinfo"] {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5em;
+  *zoom: 1;
+}
+/* line 121, ../scss/vendor/foundation/components/_global.scss */
+header[role="banner"]:before,
+main[role="main"]:before,
+footer[role="contentinfo"]:before, header[role="banner"]:after,
+main[role="main"]:after,
+footer[role="contentinfo"]:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../scss/vendor/foundation/components/_global.scss */
+header[role="banner"]:after,
+main[role="main"]:after,
+footer[role="contentinfo"]:after {
+  clear: both;
+}
+
+/* line 26, ../scss/layout/_grid.scss */
+header[role="banner"] nav[role="navigation"] {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 75%;
+  float: left;
+}
+
+/* line 42, ../scss/layout/_grid.scss */
+header[role="banner"] > h1 {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 25%;
+  float: left;
+}
+
+/* line 7, ../scss/modules/_main-navigation.scss */
+header[role="banner"] > h1 {
+  margin: 0;
+  padding-top: 10px;
+}
+/* line 12, ../scss/modules/_main-navigation.scss */
+header[role="banner"] > h1 > a {
+  position: relative;
+  display: block;
+  width: 120px;
+  height: 100px;
+  margin: 0 auto;
+  background: url('/images/logo-purple.png?1384701437') no-repeat;
+  text-indent: -9999px;
+}
+/* line 21, ../scss/modules/_main-navigation.scss */
+header[role="banner"] > h1 > a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 120px;
+  height: 100px;
+  background: url('/images/logo-blue.png?1384701411') no-repeat;
+  opacity: 1;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 35, ../scss/modules/_main-navigation.scss */
+header[role="banner"] > h1 > a:hover:before {
+  opacity: 0;
+}
+/* line 42, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"] {
+  background: #6d6e71;
+  line-height: 20px;
+}
+/* line 47, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"]:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 10px;
+  height: 100%;
+  margin-right: -5px;
+  background: #6d6e71;
+  -webkit-transform: skewX(-11deg);
+  -moz-transform: skewX(-11deg);
+  -ms-transform: skewX(-11deg);
+  -o-transform: skewX(-11deg);
+  transform: skewX(-11deg);
+}
+/* line 59, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"] > ul {
+  padding: 10px 0;
+}
+/* line 61, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"] > ul > li {
+  padding-left: 10px;
+}
+/* line 64, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"] > ul > li:before {
+  content: "•";
+  color: white;
+  padding-right: 10px;
+}
+/* line 70, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"] > ul > li:first-child {
+  padding-left: 0;
+}
+/* line 73, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"] > ul > li:first-child:first-child:before {
+  display: none;
+}
+/* line 78, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"] > ul > li > a {
+  color: white;
+  text-decoration: none;
+}
+/* line 82, ../scss/modules/_main-navigation.scss */
+header[role="banner"] nav[role="navigation"] > ul > li > a:hover {
+  color: #a8c05c;
 }
