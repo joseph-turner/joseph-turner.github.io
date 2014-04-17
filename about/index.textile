@@ -3,6 +3,6 @@ layout: default
 title: "About Me"
 ---
 
-h1. About Me
+<h1>About Me</h1>
 
-p. Coming soon: All about how I defeated the evil Thunder King and his horde of squiggly lines.
+<p>Coming soon: All about how I defeated the evil Thunder King and his horde of squiggly lines.</p>

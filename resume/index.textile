@@ -14,8 +14,10 @@ title: "Joseph Turner’s Resume"
             <p>Craft well-formed, standards-based HTML and CSS using Photoshop style guides provided by designers. Collaborate closely with designers and developers to ensure design integrity and application flexibility</p>
             <h4>Projects:</h4>
             <dl>
-                <dt><a href="http://scentrend.com/">ScenTrend.com</a></dt>
-                <dd>In this project I was responsible for the HTML CSS and JS. It features scroll-based</dd>
+                <dt><a href="http://scentsybuddies.com">Scentsy Buddies</a></dt>
+                <dd>I handled the Home page. CSS animations, animated gifs, everything moving without the help of JS at all.</dd>
+                <dt><a href="http://scentrend.com/2013">ScenTrend 2013</a></dt>
+                <dd>In this project I was responsible for the HTML, CSS, and JS. It features a scroll-based parallax effect.</dd>
             </dl>
         </div>
         <div>
