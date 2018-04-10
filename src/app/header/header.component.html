@@ -1,0 +1,26 @@
+<header class="header">
+  <div id="headerShapes" class="header__shapes"></div>
+  <button #navToggle class="hamburger" (click)="toggleNav()">
+    <span class="sr-only">Menu</span>
+    <div class="hamburger__layer"></div>
+  </button>
+
+
+  <nav class="site-nav container">
+    <h1 class="logo">
+      <a routerLink="/" class="logo__link">
+        <svg>
+          <use xlink:href="/assets/sprite.svg#logo"></use>
+        </svg>
+      </a>
+    </h1>
+    <ul #siteNav class="site-nav__list">
+      <li class="site-nav__item"><a routerLink="/" routerLinkActive="site-nav__link--active" [routerLinkActiveOptions]="{ exact: true }" class="site-nav__link">Intro</a></li>
+      <li class="site-nav__item"><a routerLink="experience" routerLinkActive="site-nav__link--active" class="site-nav__link">Experience</a></li>
+      <!-- <li class="site-nav__item"><a routerLink="side-projects" routerLinkActive="site-nav__link--active" class="site-nav__link">Side Projects</a></li> -->
+      <li class="site-nav__item"><a routerLink="skills" routerLinkActive="site-nav__link--active" class="site-nav__link">Skills</a></li>
+      <li class="site-nav__item"><a routerLink="interests" routerLinkActive="site-nav__link--active" class="site-nav__link">Interests</a></li>
+      <!-- <li class="site-nav__item"><a routerLink="contact" routerLinkActive="site-nav__link--active" class="site-nav__link">Contact</a></li> -->
+    </ul>
+  </nav>
+</header>
