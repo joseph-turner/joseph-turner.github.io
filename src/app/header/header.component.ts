@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, AfterContentInit, AfterViewInit, ElementRef, ViewChild, ViewChildren } from '@angular/core';
 
-import * as $ from 'jquery';
 import * as svg from 'svg.js';
 import { SwitchView } from '@angular/common/src/directives/ng_switch';
 
@@ -13,8 +12,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @Input() title: string;
   @ViewChild('siteNav') siteNav;
   @ViewChild('navToggle') navToggle;
+  @ViewChild('headerShapes') headerShapes;
 
-  $header;
   headerHeight;
   headerWidth;
   hexSize;
@@ -45,7 +44,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     const y = Math.max(this.randomInt(0, this.headerHeight), );
     const color = this.colorizer(x);
 
-    $('.header__shapes').append('<div id="' + shapeId + '" class="header__shape"></div>');
+    this.headerShapes.nativeElement.insertAdjacentHTML('beforeend', '<div id="' + shapeId + '" class="header__shape"></div>');
 
     // TODO: Position using css% instead of cx & cy
     const shape = svg(shapeId).polygon(shapeString).cx(x).cy(y).fill({ color: color });
@@ -71,7 +70,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     const shapeMin: number = Math.floor(Math.sqrt(area) / 5);
     const shapeMax: number = Math.floor(Math.sqrt(area) / 3);
 
-    document.getElementById('headerShapes').innerHTML = '';
+    this.headerShapes.nativeElement.innerHTML = '';
 
     for (let i = 0; i < this.randomInt(shapeMin, shapeMax); i++) {
       this.shapeBuilder(hexSize, 'hex' + i);
@@ -87,18 +86,18 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.el.nativeElement);
-    this.$header = $('.header__shapes');
-    this.headerHeight = this.$header.outerHeight();
-    this.headerWidth = this.$header.outerWidth();
+    const headerShapes = this.headerShapes.nativeElement;
+    this.headerWidth = headerShapes.offsetWidth;
+    this.headerHeight = headerShapes.offsetHeight;
 
+    // TODO: create a shapes directive/component
     this.shapesInit(this.headerWidth, this.headerHeight);
 
     window.onresize = (e) => {
       clearTimeout(this.resizeTimer);
       this.resizeTimer = setTimeout( () => {
-        this.headerHeight = this.$header.outerHeight();
-        this.headerWidth = this.$header.outerWidth();
+        this.headerHeight = headerShapes.outerHeight();
+        this.headerWidth = headerShapes.outerWidth();
         this.shapesInit(this.headerWidth, this.headerHeight);
       }, 250);
     };

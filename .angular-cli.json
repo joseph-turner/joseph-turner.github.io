@@ -29,7 +29,6 @@
         ]
       },
       "scripts": [],
-      "baseHref": "http://joseph-turner.github.io/",
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

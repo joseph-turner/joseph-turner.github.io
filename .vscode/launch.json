@@ -6,12 +6,10 @@
   "configurations": [
     {
         "type": "chrome",
-        "request": "attach",
+        "request": "launch",
         "name": "Attach to Running Angular App",
         "url": "http://0.0.0.0:4200",
-        "port": 9222,
-        "webRoot": "${workspaceFolder}",
-        "preLaunchTask": "npm start"
+        "webRoot": "${workspaceFolder}"
     },
     {
       "type": "chrome",
