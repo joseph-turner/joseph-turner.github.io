@@ -1,16 +1,10 @@
 // Global settings and utils
-@import
-  "functions.local",
-  "variables.local",
-  "mixins.local";
+@import "globals";
 
 // @import "normalize";
 
 // Bootstrap
 @import
-  "functions",
-  "variables",
-  "mixins",
   "root",
   "reboot",
   "type",
@@ -46,4 +40,3 @@
 ;
 
 @import "base";
-@import "header";

@@ -10,6 +10,7 @@ import { SideProjectsComponent } from './side-projects/side-projects.component';
 import { SkillsComponent } from './skills/skills.component';
 import { InterestsComponent } from './interests/interests.component';
 import { ContactComponent } from './contact/contact.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ContactComponent } from './contact/contact.component';
     SideProjectsComponent,
     SkillsComponent,
     InterestsComponent,
-    ContactComponent
+    ContactComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
