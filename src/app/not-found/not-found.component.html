@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="not-found jumbotron">
+    <header class="not-found__header">
+      <h1 class="not-found__title">404 ERROR!</h1>
+      <h2 class="not-found__subtitle">You seem lost. Don't get discouraged.</h2>
+    </header>
+    <blockquote class="not-found__quote" *ngIf="lostQuip; let lostQuip; else loading">
+      <h3 class="not-found__quote__intro">Here is a quote that might help you feel better about your current predicament.</h3>
+      <p class="not-found__quote__text">{{lostQuip?.quote}}</p>
+      <cite class="not-found__quote__author">- {{lostQuip?.author}}</cite>
+    </blockquote>
+    <ng-template #loading>Loading...</ng-template>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { SideProjectsComponent } from './side-projects/side-projects.component';
 import { SkillsComponent } from './skills/skills.component';
 import { InterestsComponent } from './interests/interests.component';
 import { ContactComponent } from './contact/contact.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: IntroComponent },
@@ -14,7 +15,9 @@ const routes: Routes = [
   { path: 'side-projects', component: SideProjectsComponent },
   { path: 'skills', component: SkillsComponent },
   { path: 'interests', component: InterestsComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'contact', component: ContactComponent },
+  { path: '404', component: NotFoundComponent},
+  { path: '**', redirectTo: '404'}
 ];
 
 @NgModule({

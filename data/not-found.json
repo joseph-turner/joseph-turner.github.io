@@ -1,0 +1,15 @@
+{
+  "not-found": {
+    "quips": [
+      { "quote": "Not all who wander are lost.", "author": "J.R.R. Tolkien" },
+      { "quote": "Not until we are lost do we begin to understand ourselves.", "author": "Henry David Thoreau" },
+      { "quote": "I have never been lost, but I will admit to being confused for several weeks.", "author": "Daniel Boone" },
+      { "quote": "Alice: Would you tell me, please, which way I ought to go from here? The Cheshire Cat: That depends a good deal on where you want to get to. Alice: I don't much care where. The Cheshire Cat: Then it doesn't much matter which way you go. Alice: ...So long as I get somewhere. The Cheshire Cat: Oh, you're sure to do that, if only you walk long enough.", "author": "Lewis Carroll" },
+      { "quote": "We must be willing to let go of the life we have planned, so as to have the life that is waiting for us.", "author": "Joseph Campbell" },
+      { "quote": "You got to go down a lot of wrong roads to find the right one.", "author": "Bob Parsons" },
+      { "quote": "The soul which has no fixed purpose in life is lost; to be everywhere, is to be nowhere.", "author": "Michel de Montaigne" },
+      { "quote": "Every one goes astray, but the least imprudent are they who repent the soonest.", "author": "Voltaire" },
+      { "quote": "I lost some time once. It's always in the last place you look for it.", "author": "Neil Gaiman" }
+    ]
+  }
+}
