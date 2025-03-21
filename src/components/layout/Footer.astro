@@ -1,0 +1,57 @@
+---
+import Icon from '../common/Icon.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-gray-900 py-6 text-white">
+  <div
+    class="container mx-auto flex flex-col items-center justify-between px-6 md:flex-row"
+  >
+    <!-- Navigation Links -->
+    <nav class="flex space-x-4 text-sm">
+      <a href="/" class="hover:text-gray-400">Home</a>
+      <a href="/projects" class="hover:text-gray-400">Projects</a
+      >
+      <a href="/blog" class="hover:text-gray-400">Blog</a>
+      <a href="/contact" class="hover:text-gray-400">Contact</a>
+    </nav>
+
+    <!-- Social Media Links -->
+    <div class="mt-4 flex justify-around md:mt-0">
+      <a
+        href="https://github.com/yourusername"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="github-fill" />
+        <a
+          href="https://linkedin.com/in/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="linkedin-box-fill" />
+        </a>
+        <a
+          href="https://twitter.com/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            class="h-5 w-5 transition hover:text-gray-400"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M23.954 4.569c-.885.389-1.83.654-2.825..."
+            ></path>
+          </svg>
+        </a>
+      </a>
+
+      <!-- Copyright -->
+      <p class="mt-4 text-xs text-gray-400 md:mt-0">
+        © {year} Joseph Turner. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
