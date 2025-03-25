@@ -1,0 +1,32 @@
+---
+import Header from '@components/layout/Header/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import '@fontsource-variable/archivo/standard.css';
+import '@fontsource-variable/archivo/standard-italic.css';
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Joseph Turner</title>
+    <script>
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+          (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+      );
+    </script>
+  </head>
+  <body
+    class="bg-white text-slate-800 dark:bg-slate-700 dark:text-white"
+  >
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

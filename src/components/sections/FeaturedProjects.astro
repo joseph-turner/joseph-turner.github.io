@@ -1,0 +1,81 @@
+---
+import projects from '../../data/projects.ts';
+
+const maxVisibleProjects = 3; // Show 3 featured projects by default
+---
+
+<section id="projects" class="bg-slate-700 py-16">
+  <div class="container mx-auto px-6">
+    <h2
+      class="mb-8 text-center text-3xl font-bold text-slate-50"
+    >
+      Featured Projects
+    </h2>
+    <p class="mb-12 text-center text-gray-500 text-slate-100">
+      A selection of projects showcasing my skills in React,
+      Next.js, and more.
+    </p>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.slice(0, maxVisibleProjects).map((project) => (
+          <div class="overflow-hidden rounded-2xl bg-white shadow-lg transition hover:scale-105">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="h-48 w-full object-cover"
+            />
+
+            <div class="p-6">
+              <h3 class="mb-2 text-xl font-semibold">
+                {project.title}
+              </h3>
+              <p class="mb-4 text-sm text-gray-500">
+                {project.description}
+              </p>
+
+              <div class="mb-4 flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span class="rounded bg-gray-200 px-2 py-1 text-sm">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div class="flex gap-4">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    class="text-blue-500 hover:underline"
+                  >
+                    Live Demo
+                  </a>
+                )}
+
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    class="text-gray-500 hover:underline"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 text-center">
+      <a
+        href="/projects"
+        class="inline-block rounded-2xl bg-blue-500 px-6 py-3 text-white hover:bg-blue-600"
+      >
+        View All Projects
+      </a>
+    </div>
+  </div>
+</section>

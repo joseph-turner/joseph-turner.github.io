@@ -1,62 +1,48 @@
-# **Interactive Resume**
+# Astro Starter Kit: Basics
 
-## **Description**
-This is my [interactive resume](https://joseph-turner.github.io), built with Astro and Tailwind CSS. It showcases my professional experience, skills, and projects in a visually engaging and interactive format.
+```sh
+npm create astro@latest -- --template basics
+```
 
----
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
 
-## **Features**
-- **Interactive Design**: Dynamic and responsive design with hover effects and animations.
-- **Tech Stack**: Built with Astro, Tailwind CSS, and Yarn.
-- **Accessible & Fast**: Designed for performance and accessibility.
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
----
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
 
-## **Tech Stack**
-- **Framework**: [Astro](https://astro.build)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Component Library**: [daisyUI](https://daisyui.com)
-- **Package Manager**: [Yarn](https://yarnpkg.com)
+## 🚀 Project Structure
 
----
+Inside of your Astro project, you'll see the following folders and files:
 
-## **Installation**
-Not sure why you'd want to, but to set up the project locally, follow these steps:
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/joseph-turner/joseph-turner.github.io.git
-   ```
-2. Navigate to the project directory
-   ```bash
-   cd joseph-turner.github.io
-   ```
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-3. Install dependencies
-   ```bash
-   pnpm install
-   ```
+## 🧞 Commands
 
-4. Start the development server
-   ```bash
-   pnpm run dev
-   ```
+All commands are run from the root of the project, from a terminal:
 
-5. Open your browser at [http://localhost:4321](http://localhost:4321)
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
----
+## 👀 Want to learn more?
 
-## **Contributing**
-This is a personal project and isn't currently open for contributions. However, feedback and suggestions are welcome! Feel free to open an issue.
-
----
-
-## **License**
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
----
-
-## **Contact**
-If you have any questions or would like to get in touch, feel free to contact me:
-* **Email:** iamjoeturner@gmail.com
-* **LinkedIn:** https://www.linkedin.com/in/joseph-turner-3b8ab116/
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

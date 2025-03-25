@@ -1,2 +1,2 @@
-/// <reference path="../.astro/types.d.ts" />
-/// <reference types="astro/client" />
+// Custom type declarations
+declare module 'eslint-config-prettier';

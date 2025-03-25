@@ -1,0 +1,12 @@
+---
+import cx from 'classnames';
+const { className, href } = Astro.props;
+const classes = cx(
+  'text-gray-700 dark:text-white transition hover:text-blue-600',
+  className
+);
+---
+
+<a class={classes} href={href}>
+  <slot />
+</a>
