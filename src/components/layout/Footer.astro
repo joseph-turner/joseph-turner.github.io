@@ -4,54 +4,41 @@ import Icon from '../common/Icon.astro';
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-900 py-6 text-white">
+<footer class="bg-slate-900 pt-16 pb-20 text-white">
   <div
-    class="container mx-auto flex flex-col items-center justify-between px-6 md:flex-row"
+    class="container mx-auto mb-12 flex flex-col items-center justify-between md:flex-row"
   >
     <!-- Navigation Links -->
-    <nav class="flex space-x-4 text-sm">
-      <a href="/" class="hover:text-gray-400">Home</a>
-      <a href="/projects" class="hover:text-gray-400">Projects</a
+    <nav class="flex gap-4 text-sm">
+      <a class="hover:text-gray-400" href="/">Home</a>
+      <a class="hover:text-gray-400" href="/projects">Projects</a
       >
-      <a href="/blog" class="hover:text-gray-400">Blog</a>
-      <a href="/contact" class="hover:text-gray-400">Contact</a>
+      <a class="hover:text-gray-400" href="/blog">Blog</a>
+      <a class="hover:text-gray-400" href="/contact">Contact</a>
     </nav>
 
     <!-- Social Media Links -->
-    <div class="mt-4 flex justify-around md:mt-0">
+    <div
+      class="mt-8 flex max-w-full flex-wrap justify-around gap-3 md:mt-0"
+    >
       <a
-        href="https://github.com/yourusername"
-        target="_blank"
+        href="https://github.com/joseph-turner"
         rel="noopener noreferrer"
+        target="_blank"
       >
-        <Icon name="github-fill" />
-        <a
-          href="https://linkedin.com/in/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="linkedin-box-fill" />
-        </a>
-        <a
-          href="https://twitter.com/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg
-            class="h-5 w-5 transition hover:text-gray-400"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M23.954 4.569c-.885.389-1.83.654-2.825..."
-            ></path>
-          </svg>
-        </a>
+        <Icon className="h-6 w-6" name="github-fill" />
       </a>
-
-      <!-- Copyright -->
-      <p class="mt-4 text-xs text-gray-400 md:mt-0">
-        © {year} Joseph Turner. All rights reserved.
-      </p>
+      <a
+        href="https://www.linkedin.com/in/joseph-turner-3b8ab116/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Icon className="h-6 w-6" name="linkedin-box-fill" />
+      </a>
     </div>
   </div>
+  <!-- Copyright -->
+  <p class="text-center text-xs text-gray-400 md:mt-0">
+    © {year} Joseph Turner. All rights reserved.
+  </p>
 </footer>

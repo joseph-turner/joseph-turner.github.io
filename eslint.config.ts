@@ -1,6 +1,5 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
-import { group } from 'console';
 import prettierConfig from 'eslint-config-prettier';
 import astro from 'eslint-plugin-astro';
 import perfectionist from 'eslint-plugin-perfectionist';
@@ -33,7 +32,6 @@ export default tseslint.config(
         ...globals.node,
       },
       parserOptions: {
-        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
       sourceType: 'module',
@@ -43,21 +41,6 @@ export default tseslint.config(
     },
     rules: {
       'prettier/prettier': 'warn',
-      'sort-imports': [
-        'warn',
-        {
-          groups: [
-            'type',
-            ['builtin', 'external'],
-            'internal',
-            ['parent', 'sibling', 'index'],
-            'object',
-            ['parent-type', 'sibling-type', 'index-type'],
-            'style',
-            'unknown',
-          ],
-        },
-      ],
     },
   }
 ) satisfies ConfigArray;

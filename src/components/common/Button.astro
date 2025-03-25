@@ -1,46 +1,67 @@
 ---
-// Props for flexibility
+import type { HTMLTag, Polymorphic } from 'astro/types';
+
+import classNames from 'classnames';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+}> & {
+  class?: string;
+  href?: string;
+  size?: 'lg' | 'md' | 'sm';
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'danger' | 'outline' | 'primary' | 'secondary';
+};
+
 const {
   as = 'button', // Supports <a> or <button> elements
+  class: customClass = '', // Allow additional classes
   href, // Required if using <a>
+  size = 'md', // 'sm', 'md', 'lg'
   type = 'button', // Button type (e.g., submit, reset)
   variant = 'primary', // 'primary', 'secondary', etc.
-  size = 'md', // 'sm', 'md', 'lg'
-  class: customClass = '', // Allow additional classes
   ...props // Spread remaining attributes
-} = Astro.props;
+} = Astro.props as Props<HTMLTag>;
 
 const baseClass = `
   inline-flex items-center justify-center
-  font-medium rounded-2xl transition-colors
+  font-medium rounded-sm transition-colors
   focus:outline-none focus-visible:ring-2
   focus-visible:ring-offset-2
 `;
 
 const variantClass = {
-  primary: 'bg-blue-500 text-white hover:bg-blue-600',
-  secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
+  danger: 'bg-red-500 text-white hover:bg-red-600',
   outline:
     'border border-gray-400 text-gray-800 hover:bg-gray-100',
-  danger: 'bg-red-500 text-white hover:bg-red-600',
+  primary: 'bg-primary-600 text-white hover:bg-primary-700',
+  secondary:
+    'bg-gray-900 text-gray-100 hover:bg-gray-950 border border-gray-600',
 }[variant];
 
 const sizeClass = {
+  lg: 'px-8 py-5 text-lg',
+  md: 'px-6 py-3 text-base',
   sm: 'px-3 py-1.5 text-sm',
-  md: 'px-4 py-2 text-base',
-  lg: 'px-6 py-3 text-lg',
 }[size];
 
-const combinedClass = `${baseClass} ${variantClass} ${sizeClass} ${customClass}`;
+const combinedClass = classNames(
+  baseClass,
+  variantClass,
+  sizeClass,
+  customClass
+);
+
+const isLink = as === 'a' || !!href;
 ---
 
 {
-  as === 'a' ? (
-    <a href={href} class={combinedClass} {...props}>
+  isLink ? (
+    <a class={combinedClass} href={href} {...props}>
       <slot />
     </a>
   ) : (
-    <button type={type} class={combinedClass} {...props}>
+    <button class={combinedClass} type={type} {...props}>
       <slot />
     </button>
   )

@@ -1,0 +1,89 @@
+---
+import classNames from 'classnames';
+
+import Icon from '../Icon.astro';
+
+const iconClasses = classNames('w-4 h-4');
+---
+
+<theme-control
+  class="flex rounded-full bg-cyan-500 dark:bg-gray-900"
+>
+  <button
+    aria-label="Set system Mode"
+    class="rounded-full p-2"
+    id="systemButton"
+  >
+    <Icon className={iconClasses} name="computer-line" />
+  </button>
+  <button
+    aria-label="Set Light Mode"
+    class="rounded-full p-2"
+    id="lightButton"
+  >
+    <Icon className={iconClasses} name="sun-fill" />
+  </button>
+  <button
+    aria-label="Set Dark Mode"
+    class="rounded-full p-2"
+    id="darkButton"
+  >
+    <Icon className={iconClasses} name="moon-fill" />
+  </button>
+</theme-control>
+
+<script>
+  class ThemeControl extends HTMLElement {
+    updateTheme(theme?: string) {
+      if (theme !== 'system') {
+        document.documentElement.classList.toggle(
+          'dark',
+          theme === 'dark'
+        );
+        localStorage.theme = theme;
+        this.setActiveIcon();
+        return;
+      }
+      localStorage.removeItem('theme');
+      document.documentElement.classList.toggle(
+        'dark',
+        localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)')
+              .matches)
+      );
+      this.setActiveIcon();
+    }
+
+    setActiveIcon() {
+      const activeClass = ['bg-cyan-400', 'dark:bg-gray-800'];
+      const buttons = this.querySelectorAll('button');
+      buttons.forEach((button) =>
+        button.classList.remove(...activeClass)
+      );
+      const theme = localStorage.theme || 'system';
+      const activeButton = this.querySelector(`#${theme}Button`);
+      activeButton?.classList.add(...activeClass);
+    }
+
+    connectedCallback() {
+      this.setActiveIcon();
+      this.querySelector('#systemButton')?.addEventListener(
+        'click',
+        () => this.updateTheme('system')
+      );
+
+      this.querySelector('#darkButton')?.addEventListener(
+        'click',
+        () => this.updateTheme('dark')
+      );
+
+      this.querySelector('#lightButton')?.addEventListener(
+        'click',
+        () => this.updateTheme('light')
+      );
+    }
+  }
+
+  customElements.define('theme-control', ThemeControl);
+</script>

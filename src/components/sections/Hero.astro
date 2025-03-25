@@ -1,37 +1,28 @@
 ---
-
+import Button from '../common/Button.astro';
 ---
 
-<section class="flex min-h-48 items-center justify-center">
-  <div class="px-4 text-center">
-    <img
-      src="profile.jpg"
-      alt="Joseph Turner"
-      class="mx-auto mb-4 h-32 w-32 rounded-full"
-    />
+<section
+  class="flex items-center bg-slate-300 pt-36 pb-20 dark:bg-gray-900"
+>
+  <div class="container mx-auto px-4">
     <h1
-      class="mb-4 text-4xl font-bold text-gray-900 md:text-6xl"
+      class="mb-4 font-heading text-4xl text-primary-700 md:w-[60%] md:text-6xl dark:text-primary-600"
     >
-      Pixel-Perfect Front-End Developmene & Performance
-      Optimization
+      <span class="block text-slate-700 dark:text-gray-100"
+        >Hi, I'm Joseph Turner</span
+      >
+      Senior Front-End Developer
     </h1>
-    <p class="mb-8 text-lg text-gray-700 md:text-2xl">
-      "Hi, I'm Joseph Turner—a front-end developer with a
-      designer's eye for pixel-perfect UI and a passion for
-      crafting seamless, high-performance web experiences. With
-      over six years of React expertise, I specialize in building
-      scalable, user-centric applications that blend aesthetics
-      with functionality. Whether leading a team, optimizing
-      workflows, or pushing the boundaries of modern web
-      development, I thrive on solving complex problems and
-      delivering clean, maintainable code. Take a look at my
-      resume to see how I can bring value to your team."
-    </p>
-    <a
-      href="/resume"
-      class="rounded-full bg-blue-600 px-8 py-3 font-semibold text-white transition duration-300 hover:bg-blue-700"
+    <p
+      class="mb-8 text-lg text-gray-700 md:w-[85%] md:text-2xl dark:text-gray-300"
     >
-      View My Resume
-    </a>
+      Building scalable, high-performance web apps with modern
+      frameworks that deliver exceptional user experiences.
+    </p>
+    <Button class="mr-4" href="/resume">
+      Interactive Resume
+    </Button>
+    <Button href="#" variant="secondary"> Resume PDF </Button>
   </div>
 </section>

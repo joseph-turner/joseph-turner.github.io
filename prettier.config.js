@@ -19,5 +19,7 @@ export default {
   semi: true,
   singleQuote: true,
   tabWidth: 2,
+  tailwindConfig: './tailwind.config.mjs',
+  tailwindStylesheet: './src/styles/global.css',
   trailingComma: 'es5',
 };
