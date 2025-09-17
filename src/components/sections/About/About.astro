@@ -1,69 +1,55 @@
----
-import Button from '@components/common/Button.astro';
----
-
-<section class="bg-slate-200 px-6 py-12 dark:bg-slate-800">
-  <div
-    class="container mx-auto max-w-3xl text-gray-600 dark:text-gray-200"
+<div
+  class="mx-auto max-w-3xl rounded-xl p-10 text-gray-700 shadow-lg dark:text-gray-200"
+>
+  <h2
+    class="mb-6 text-3xl font-bold text-gray-900 dark:text-white"
   >
-    <h2
-      class="mb-6 text-3xl font-bold text-gray-800 dark:text-white"
-    >
-      About Me
-    </h2>
-
+    About Me
+  </h2>
+  <div class="flex flex-col items-center gap-8 md:flex-row">
     <img
       alt="Joseph Turner"
-      class="float-left mr-4 mb-4 h-32 w-32 rounded-full"
+      class="h-32 w-32 rounded-full border-4 border-primary-200 dark:border-primary-700"
       src="profile.jpg"
     />
-
-    <p class="mb-4">
-      Hi, I’m <strong>Joseph Turner</strong> — <strong
-        >Senior Front-End Developer</strong
-      >, code wrangler, and occasional bug whisperer. I’ve been
-      building for the web for over <strong>13 years</strong> (yes,
-      the internet was around back then), and I still love making
-      things
-      <strong>fast, clean, and user-friendly</strong>.
-    </p>
-
-    <p class="mb-4">
-      I started out in <strong>design</strong>, which means I
-      bring a sharp eye for detail to every line of code. I
-      bridge the gap between <strong
-        >design and development</strong
-      >, making sure what ships is both functional <em>and</em> beautiful.
-    </p>
-
-    <p class="mb-4">
-      These days, <strong>React</strong> and <strong
-        >Next.js</strong
-      > are my go-to tools, and I’ve led small teams to ship scalable
-      apps and automate all the boring stuff. I might secretly enjoy
-      a good linting error (don’t judge). I also love using <strong
-        >AI</strong
-      > — from brainstorming ideas to speeding up workflows — and
-      I’m always looking for clever ways to integrate it into daily
-      life and development.
-    </p>
-
-    <p class="mb-4">
-      Outside of work, I’m a <strong
-        >husband and dad to six</strong
-      >, passionate about <strong
-        >health, fitness, and wellness</strong
-      >, and always planning our next family adventure. I love <strong
-        >exploring new places</strong
-      >, tasting new foods, and collecting experiences that make
-      life a little richer.
-    </p>
-
-    <p class="mb-4">
-      <strong>Let’s connect</strong> if you want to talk code, AI,
-      fitness, or travel hacks — or just share a great GIF.
-    </p>
-
-    <Button href="#contact">Let's Connect</Button>
+    <div>
+      <p class="mb-4">
+        Hi, I’m <strong>Joseph Turner</strong> — <strong
+          >Senior Front-End Developer</strong
+        >, code wrangler, and occasional bug whisperer. I’ve been
+        building for the web for over <strong>13 years</strong> (yes,
+        the internet was around back then), and I still love making
+        things <strong>fast, clean, and user-friendly</strong>.
+      </p>
+      <p class="mb-4">
+        I started out in <strong>design</strong>, which means I
+        bring a sharp eye for detail to every line of code. I
+        bridge the gap between <strong
+          >design and development</strong
+        >, making sure what ships is both functional <em>and</em>
+        beautiful.
+      </p>
+      <p class="mb-4">
+        These days, <strong>React</strong> and <strong
+          >Next.js</strong
+        > are my go-to tools, and I’ve led small teams to ship scalable
+        apps and automate all the boring stuff. I might secretly enjoy
+        a good linting error (don’t judge). I also love using <strong
+          >AI</strong
+        > — from brainstorming ideas to speeding up workflows — and
+        I’m always looking for clever ways to integrate it into daily
+        life and development.
+      </p>
+      <p class="mb-4">
+        Outside of work, I’m a <strong
+          >husband and dad to six</strong
+        >, passionate about <strong
+          >health, fitness, and wellness</strong
+        >, and always planning our next family adventure. I love <strong
+          >exploring new places</strong
+        >, tasting new foods, and collecting experiences that
+        make life a little richer.
+      </p>
+    </div>
   </div>
-</section>
+</div>

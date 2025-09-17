@@ -1,35 +1,69 @@
 ---
 import Button from '../common/Button.astro';
+import Icon from '../common/Icon.astro';
 ---
 
-<section
-  class="flex items-center bg-slate-300 pt-36 pb-20 dark:bg-gray-900"
+<div class="pointer-events-none absolute inset-0 select-none">
+  <!-- Subtle background gradient, Vercel-esque -->
+  <div
+    class="h-full w-full bg-gradient-to-br from-primary-100 via-white to-secondary-100 opacity-80 dark:from-gray-900 dark:via-gray-950 dark:to-primary-900"
+  >
+  </div>
+</div>
+<div
+  class="relative z-10 mx-auto w-full max-w-2xl py-24 text-center"
 >
-  <div class="container mx-auto px-4">
-    <h1
-      class="mb-4 font-heading text-4xl text-primary-700 md:w-[60%] md:text-6xl dark:text-primary-600"
+  <h1
+    class="mb-6 font-heading text-5xl font-extrabold tracking-tight text-gray-900 md:text-7xl dark:text-white"
+  >
+    Joseph Turner
+  </h1>
+  <p
+    class="mb-8 text-xl font-medium text-gray-700 md:text-2xl dark:text-gray-300"
+  >
+    Senior Front-End Developer<br />
+    Building scalable, high-performance web apps with modern frameworks.
+  </p>
+  <div
+    class="mb-8 flex flex-col justify-center gap-4 sm:flex-row"
+  >
+    <Button
+      as="a"
+      href="/resume"
+      variant="primary"
+      size="md"
+      class="inline-block shadow"
     >
-      <span class="block text-slate-700 dark:text-gray-100"
-        >Hi, I'm Joseph Turner</span
-      >
-      Senior Front-End Developer
-    </h1>
-    <p
-      class="mb-8 text-lg text-gray-700 md:w-[85%] md:text-2xl dark:text-gray-300"
-    >
-      Building scalable, high-performance web apps with modern
-      frameworks that deliver exceptional user experiences.
-    </p>
-    <Button class="mr-4" href="/resume">
       Interactive Resume
     </Button>
     <Button
       as="a"
       href="/resume.pdf"
-      variant="secondary"
+      size="md"
+      class="inline-block bg-secondary-600 shadow hover:bg-secondary-700"
       download="Joseph_Turner_Resume.pdf"
     >
       Resume PDF
     </Button>
   </div>
-</section>
+</div>
+<div class="mt-4 flex justify-center gap-6">
+  <a
+    href="https://github.com/joseph-turner"
+    target="_blank"
+    rel="noopener"
+    aria-label="GitHub"
+    class="text-gray-400 transition-colors hover:text-primary-500"
+  >
+    <Icon className="h-10 w-10" name="github-fill" />
+  </a>
+  <a
+    href="https://www.linkedin.com/in/joseph-turner-3b8ab116/"
+    target="_blank"
+    rel="noopener"
+    aria-label="LinkedIn"
+    class="text-gray-400 transition-colors hover:text-secondary-500"
+  >
+    <Icon className="h-10 w-10" name="linkedin-box-fill" />
+  </a>
+</div>
