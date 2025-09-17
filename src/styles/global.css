@@ -4,27 +4,44 @@
 
 @theme {
   /* ======== Colors ======== */
-  /* Primary */
-  --color-primary-100: hsl(185deg 100% 90%);
-  --color-primary-200: hsl(185deg 100% 80%);
-  --color-primary-300: hsl(185deg 100% 70%);
-  --color-primary-400: hsl(185deg 100% 60%);
-  --color-primary-500: hsl(185deg 100% 50%);
-  --color-primary-600: hsl(185deg 100% 40%);
-  --color-primary-700: hsl(185deg 100% 30%);
-  --color-primary-800: hsl(185deg 100% 20%);
-  --color-primary-900: hsl(185deg 100% 10%);
+  /* Primary: French Blue (#2690d7) */
+  --color-primary-100: hsl(207deg 77% 92%);
+  --color-primary-200: hsl(207deg 77% 85%);
+  --color-primary-300: hsl(207deg 77% 75%);
+  --color-primary-400: hsl(207deg 77% 65%);
+  --color-primary-500: hsl(207deg 77% 52%); /* #2690d7 */
+  --color-primary-600: hsl(207deg 77% 44%);
+  --color-primary-700: hsl(207deg 77% 36%);
+  --color-primary-800: hsl(207deg 77% 28%);
+  --color-primary-900: hsl(207deg 77% 20%);
 
-  /* Secondary */
-  --color-secondary-100: hsl(40deg 100% 90%);
-  --color-secondary-200: hsl(40deg 100% 80%);
-  --color-secondary-300: hsl(40deg 100% 70%);
-  --color-secondary-400: hsl(40deg 100% 60%);
-  --color-secondary-500: hsl(40deg 100% 50%);
-  --color-secondary-600: hsl(40deg 100% 40%);
-  --color-secondary-700: hsl(40deg 100% 30%);
-  --color-secondary-800: hsl(40deg 100% 20%);
-  --color-secondary-900: hsl(40deg 100% 10%);
+  /* Secondary: Red (#FB9373) */
+  --color-secondary-100: hsl(18deg 96% 95%);
+  --color-secondary-200: hsl(18deg 96% 90%);
+  --color-secondary-300: hsl(18deg 96% 80%);
+  --color-secondary-400: hsl(18deg 96% 70%);
+  --color-secondary-500: hsl(18deg 96% 71%); /* #FB9373 */
+  --color-secondary-600: hsl(18deg 96% 60%);
+  --color-secondary-700: hsl(18deg 96% 50%);
+  --color-secondary-800: hsl(18deg 96% 40%);
+  --color-secondary-900: hsl(18deg 96% 30%);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(
+    90deg,
+    hsl(207deg 77% 52%) 0%,
+    hsl(207deg 77% 65%) 100%
+  );
+  --gradient-secondary: linear-gradient(
+    90deg,
+    hsl(18deg 96% 71%) 0%,
+    hsl(18deg 96% 60%) 100%
+  );
+  --gradient-hero: linear-gradient(
+    120deg,
+    hsl(207deg 77% 52%) 0%,
+    hsl(18deg 96% 71%) 100%
+  );
 
   /* Grays */
   --color-gray-100: hsl(185deg 5% 90%);

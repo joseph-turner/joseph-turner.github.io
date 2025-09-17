@@ -23,6 +23,13 @@ import Button from '../common/Button.astro';
     <Button class="mr-4" href="/resume">
       Interactive Resume
     </Button>
-    <Button href="#" variant="secondary"> Resume PDF </Button>
+    <Button
+      as="a"
+      href="/resume.pdf"
+      variant="secondary"
+      download="Joseph_Turner_Resume.pdf"
+    >
+      Resume PDF
+    </Button>
   </div>
 </section>

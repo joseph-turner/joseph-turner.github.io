@@ -4,33 +4,48 @@ import classNames from 'classnames';
 import Icon from '../Icon.astro';
 
 const iconClasses = classNames('w-4 h-4');
+const themeBtnBase =
+  'rounded-full p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 hover:bg-primary-400 hover:text-white focus-visible:ring-offset-2';
+const themeBtnActive =
+  'bg-primary-400 text-white shadow-md cursor-default';
+const themeBtnInactive = 'cursor-pointer';
+const themeBtnDarkActive =
+  'dark:bg-gray-800 dark:text-primary-400';
 ---
 
 <theme-control
-  class="flex rounded-full bg-cyan-500 dark:bg-gray-900"
+  class="flex gap-1 rounded-full bg-primary-500 dark:bg-gray-900"
 >
   <button
     aria-label="Set system Mode"
-    class="rounded-full p-2"
+    class={classNames(themeBtnBase, themeBtnInactive)}
     id="systemButton"
+    tabindex="0"
+    aria-pressed="false"
   >
     <Icon className={iconClasses} name="computer-line" />
   </button>
   <button
     aria-label="Set Light Mode"
-    class="rounded-full p-2"
+    class={classNames(themeBtnBase, themeBtnInactive)}
     id="lightButton"
+    tabindex="0"
+    aria-pressed="false"
   >
     <Icon className={iconClasses} name="sun-fill" />
   </button>
   <button
     aria-label="Set Dark Mode"
-    class="rounded-full p-2"
+    class={classNames(themeBtnBase, themeBtnInactive)}
     id="darkButton"
+    tabindex="0"
+    aria-pressed="false"
   >
     <Icon className={iconClasses} name="moon-fill" />
   </button>
 </theme-control>
+
+<style></style>
 
 <script>
   class ThemeControl extends HTMLElement {
@@ -56,14 +71,31 @@ const iconClasses = classNames('w-4 h-4');
     }
 
     setActiveIcon() {
-      const activeClass = ['bg-cyan-400', 'dark:bg-gray-800'];
       const buttons = this.querySelectorAll('button');
-      buttons.forEach((button) =>
-        button.classList.remove(...activeClass)
-      );
       const theme = localStorage.theme || 'system';
+      buttons.forEach((button) => {
+        button.setAttribute('aria-pressed', 'false');
+        button.classList.remove(
+          'bg-primary-400',
+          'dark:bg-gray-800',
+          'text-white',
+          'shadow-md',
+          'cursor-default'
+        );
+        button.classList.add('cursor-pointer');
+      });
       const activeButton = this.querySelector(`#${theme}Button`);
-      activeButton?.classList.add(...activeClass);
+      if (activeButton) {
+        activeButton.setAttribute('aria-pressed', 'true');
+        activeButton.classList.add(
+          'bg-primary-400',
+          'dark:bg-gray-800',
+          'text-white',
+          'shadow-md',
+          'cursor-default'
+        );
+        activeButton.classList.remove('cursor-pointer');
+      }
     }
 
     connectedCallback() {

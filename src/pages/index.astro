@@ -3,17 +3,138 @@ import Layout from '@layouts/Layout.astro';
 import About from '@components/sections/About/About.astro';
 import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
 import Hero from '@components/sections/Hero.astro';
+import Icon from '../components/common/Icon.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-  <Hero />
-  <About />
-  <FeaturedProjects />
-  <!--
-    <BlogTeasers />
-    <TechStack />
-  -->
+  <section
+    class="relative flex min-h-[70vh] flex-col items-center justify-center bg-gray-100 px-4 dark:bg-gray-900"
+  >
+    <div
+      class="pointer-events-none absolute inset-0 select-none"
+    >
+      <!-- Subtle background gradient, Vercel-esque -->
+      <div
+        class="h-full w-full bg-gradient-to-br from-primary-100 via-white to-secondary-100 opacity-80 dark:from-gray-900 dark:via-gray-950 dark:to-primary-900"
+      >
+      </div>
+    </div>
+    <div
+      class="relative z-10 mx-auto w-full max-w-2xl py-24 text-center"
+    >
+      <h1
+        class="mb-6 font-heading text-5xl font-extrabold tracking-tight text-gray-900 md:text-7xl dark:text-white"
+      >
+        Joseph Turner
+      </h1>
+      <p
+        class="mb-8 text-xl font-medium text-gray-700 md:text-2xl dark:text-gray-300"
+      >
+        Senior Front-End Developer<br />
+        Building scalable, high-performance web apps with modern frameworks.
+      </p>
+      <div
+        class="mb-8 flex flex-col justify-center gap-4 sm:flex-row"
+      >
+        <a
+          href="/resume"
+          class="inline-block rounded-lg bg-primary-500 px-7 py-3 text-lg font-semibold text-white shadow transition-colors hover:bg-primary-600"
+        >
+          Interactive Resume
+        </a>
+        <a
+          href="/resume.pdf"
+          class="inline-block rounded-lg bg-secondary-500 px-7 py-3 text-lg font-semibold text-white shadow transition-colors hover:bg-secondary-600"
+          download="Joseph_Turner_Resume.pdf"
+        >
+          Resume PDF
+        </a>
+      </div>
+      <div class="mt-4 flex justify-center gap-6">
+        <a
+          href="https://github.com/joseph-turner"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+          class="text-gray-400 transition-colors hover:text-primary-500"
+        >
+          <Icon className="h-7 w-7" name="github-fill" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/joseph-turner-3b8ab116/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+          class="text-gray-400 transition-colors hover:text-secondary-500"
+        >
+          <Icon className="h-7 w-7" name="linkedin-box-fill" />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section
+    class="relative z-10 bg-white px-4 py-16 dark:bg-gray-950"
+  >
+    <div
+      class="mx-auto max-w-3xl rounded-xl p-10 text-gray-700 shadow-lg dark:text-gray-200"
+    >
+      <h2
+        class="mb-6 text-3xl font-bold text-gray-900 dark:text-white"
+      >
+        About Me
+      </h2>
+      <div class="flex flex-col items-center gap-8 md:flex-row">
+        <img
+          alt="Joseph Turner"
+          class="h-32 w-32 rounded-full border-4 border-primary-200 dark:border-primary-700"
+          src="profile.jpg"
+        />
+        <div>
+          <p class="mb-4">
+            Hi, I’m <strong>Joseph Turner</strong> — <strong
+              >Senior Front-End Developer</strong
+            >, code wrangler, and occasional bug whisperer. I’ve
+            been building for the web for over <strong
+              >13 years</strong
+            > (yes, the internet was around back then), and I still
+            love making things <strong
+              >fast, clean, and user-friendly</strong
+            >.
+          </p>
+          <p class="mb-4">
+            I started out in <strong>design</strong>, which means
+            I bring a sharp eye for detail to every line of code.
+            I bridge the gap between <strong
+              >design and development</strong
+            >, making sure what ships is both functional <em
+              >and</em
+            > beautiful.
+          </p>
+          <p class="mb-4">
+            These days, <strong>React</strong> and <strong
+              >Next.js</strong
+            > are my go-to tools, and I’ve led small teams to ship
+            scalable apps and automate all the boring stuff. I might
+            secretly enjoy a good linting error (don’t judge). I also
+            love using <strong>AI</strong> — from brainstorming ideas
+            to speeding up workflows — and I’m always looking for
+            clever ways to integrate it into daily life and development.
+          </p>
+          <p class="mb-4">
+            Outside of work, I’m a <strong
+              >husband and dad to six</strong
+            >, passionate about <strong
+              >health, fitness, and wellness</strong
+            >, and always planning our next family adventure. I
+            love <strong>exploring new places</strong>, tasting
+            new foods, and collecting experiences that make life
+            a little richer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
