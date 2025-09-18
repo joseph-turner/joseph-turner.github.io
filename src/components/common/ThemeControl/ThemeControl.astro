@@ -5,20 +5,15 @@ import Icon from '../Icon.astro';
 
 const iconClasses = classNames('w-4 h-4');
 const themeBtnBase =
-  'rounded-full p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 hover:bg-primary-400 hover:text-white focus-visible:ring-offset-2';
-const themeBtnActive =
-  'bg-primary-400 text-white shadow-md cursor-default';
-const themeBtnInactive = 'cursor-pointer';
-const themeBtnDarkActive =
-  'dark:bg-gray-800 dark:text-primary-400';
+  'rounded-full p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 cursor-pointer hover:bg-primary-400/30 hover:text-white';
 ---
 
 <theme-control
-  class="flex gap-1 rounded-full bg-primary-500 dark:bg-gray-900"
+  class="flex gap-1 rounded-full bg-primary-400/30 dark:bg-gray-900"
 >
   <button
     aria-label="Set system Mode"
-    class={classNames(themeBtnBase, themeBtnInactive)}
+    class={classNames(themeBtnBase)}
     id="systemButton"
     tabindex="0"
     aria-pressed="false"
@@ -27,7 +22,7 @@ const themeBtnDarkActive =
   </button>
   <button
     aria-label="Set Light Mode"
-    class={classNames(themeBtnBase, themeBtnInactive)}
+    class={classNames(themeBtnBase)}
     id="lightButton"
     tabindex="0"
     aria-pressed="false"
@@ -36,7 +31,7 @@ const themeBtnDarkActive =
   </button>
   <button
     aria-label="Set Dark Mode"
-    class={classNames(themeBtnBase, themeBtnInactive)}
+    class={classNames(themeBtnBase)}
     id="darkButton"
     tabindex="0"
     aria-pressed="false"
@@ -76,25 +71,33 @@ const themeBtnDarkActive =
       buttons.forEach((button) => {
         button.setAttribute('aria-pressed', 'false');
         button.classList.remove(
-          'bg-primary-400',
+          'bg-primary-200',
           'dark:bg-gray-800',
           'text-white',
           'shadow-md',
           'cursor-default'
         );
-        button.classList.add('cursor-pointer');
+        button.classList.add(
+          'cursor-pointer',
+          'hover:bg-primary-400/30',
+          'hover:text-white'
+        );
       });
       const activeButton = this.querySelector(`#${theme}Button`);
       if (activeButton) {
         activeButton.setAttribute('aria-pressed', 'true');
         activeButton.classList.add(
-          'bg-primary-400',
+          'bg-primary-200',
           'dark:bg-gray-800',
           'text-white',
           'shadow-md',
           'cursor-default'
         );
-        activeButton.classList.remove('cursor-pointer');
+        activeButton.classList.remove(
+          'cursor-pointer',
+          'hover:bg-primary-400/30',
+          'hover:text-white'
+        );
       }
     }
 
