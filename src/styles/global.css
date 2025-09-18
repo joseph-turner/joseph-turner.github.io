@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -114,6 +115,88 @@
 
   /* ======== Typography ======== */
   --font-sans: 'Archivo Variable', sans-serif;
+}
+
+@layer components {
+  /* Base typography for blog content */
+  .prose {
+    @apply prose prose-lg dark:prose-invert max-w-none leading-relaxed;
+  }
+
+  /* Headings */
+  .prose h1 {
+    @apply mb-4 mt-8 text-4xl font-extrabold tracking-tight;
+  }
+
+  .prose h2 {
+    @apply mb-4 mt-10 text-3xl font-bold tracking-tight;
+  }
+
+  .prose h3 {
+    @apply mb-3 mt-8 text-2xl font-semibold;
+  }
+
+  .prose h4 {
+    @apply mb-2 mt-6 text-xl font-semibold;
+  }
+
+  /* Paragraphs */
+  .prose p {
+    @apply mb-6 text-gray-700 dark:text-gray-300;
+  }
+
+  /* Links */
+  .prose a {
+    @apply text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium underline underline-offset-2;
+  }
+
+  /* Lists */
+  .prose ul {
+    @apply mb-6 list-disc space-y-2 pl-6;
+  }
+
+  .prose ol {
+    @apply mb-6 list-decimal space-y-2 pl-6;
+  }
+
+  /* Blockquotes */
+  .prose blockquote {
+    @apply border-primary-500 my-6 border-l-4 pl-4 italic text-gray-600 dark:text-gray-300;
+  }
+
+  /* Code */
+  .prose code {
+    @apply rounded bg-gray-100 px-1 py-0.5 font-mono text-sm dark:bg-gray-800;
+  }
+
+  /* Preformatted code blocks */
+  .prose pre {
+    @apply my-6 overflow-x-auto rounded-xl bg-gray-900 p-4 text-gray-100;
+  }
+
+  /* Images */
+  .prose img {
+    @apply my-6 rounded-xl shadow-lg;
+  }
+
+  /* Horizontal rules */
+  .prose hr {
+    @apply my-10 border-t border-gray-200 dark:border-gray-700;
+  }
+
+  /* Tables */
+  .prose table {
+    @apply my-6 w-full border-collapse text-sm;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-gray-300 px-3 py-2 dark:border-gray-700;
+  }
+
+  .prose th {
+    @apply bg-gray-100 font-semibold dark:bg-gray-800;
+  }
 }
 
 * {

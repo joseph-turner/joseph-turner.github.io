@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPost from '@layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => {
+    const raw = post.data.slug ?? post.slug ?? post.id;
+    const s = String(raw)
+      .replace(/\.(md|mdx)$/, '')
+      .split('/')
+      .pop();
+    return { params: { slug: s } };
+  });
+}
+
+const { slug } = Astro.params;
+const posts = await getCollection('blog');
+const post = posts.find((p) => {
+  const raw = p.data.slug ?? p.slug ?? p.id;
+  const entrySlug = String(raw)
+    .replace(/\.(md|mdx)$/, '')
+    .split('/')
+    .pop();
+  return (
+    entrySlug === slug ||
+    p.data?.slug === slug ||
+    String(p.id) === slug
+  );
+});
+
+if (!post) {
+  throw new Error(`Post not found: ${slug}`);
+}
+
+// Render the markdown to get the Content component
+const rendered = await (post as any).render();
+const Content = rendered.Content;
+---
+
+<BlogPost frontmatter={post.data} Content={Content} />

@@ -1,0 +1,47 @@
+---
+import Layout from './Layout.astro';
+
+// Accept loose props to avoid issues with generated types during build
+const { frontmatter, Content } = Astro.props as {
+  frontmatter: any;
+  Content: any;
+};
+
+function formatDate(dateStr: string) {
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  } catch (e) {
+    return dateStr;
+  }
+}
+---
+
+<Layout>
+  <article
+    class="prose dark:prose-invert mx-auto max-w-3xl px-4 py-16"
+  >
+    <header class="mb-6">
+      <a
+        class="mb-4 inline-block text-sm font-medium text-[color:var(--color-primary-600)] hover:underline"
+        href="/blog">← Back to blog</a
+      >
+      <h1
+        class="mb-2 font-heading text-4xl font-extrabold text-gray-900 dark:text-white"
+      >
+        {frontmatter.title}
+      </h1>
+      <time class="text-sm text-gray-500"
+        >{formatDate(frontmatter.date)}</time
+      >
+    </header>
+
+    <div class="prose dark:prose-invert max-w-none">
+      <Content />
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import Icon from '@components/common/Icon.astro';
+
+const posts = (await getCollection(
+  'blog'
+)) as CollectionEntry<'blog'>[];
+posts.sort(
+  (a, b) =>
+    new Date(b.data.date).getTime() -
+    new Date(a.data.date).getTime()
+);
+
+console.log(posts);
+---
+
+<Layout>
+  <section class="mx-auto max-w-4xl px-4 py-16">
+    <h1
+      class="mx-auto mb-6 max-w-3xl font-heading text-5xl font-extrabold tracking-tight text-gray-900 md:text-7xl dark:text-white"
+    >
+      Blog
+    </h1>
+
+    <div class="mx-auto max-w-3xl space-y-6">
+      {
+        posts.map((post) => (
+          <article class="group">
+            <a
+              class="block overflow-hidden rounded-2xl border border-primary-100 bg-white/60 p-6 transition-all duration-300 ease-in-out hover:border-primary-300 hover:shadow-lg dark:bg-transparent"
+              href={`/blog/${post.slug || post.id}`}
+            >
+              <h2 class="mb-2 text-2xl font-semibold text-gray-900 transition-colors duration-300 ease-in-out group-hover:text-primary-600 dark:text-white">
+                {post.data.title}
+              </h2>
+              <p class="mb-3 text-sm text-gray-500">
+                {new Date(post.data.date).toLocaleDateString()}
+              </p>
+              <p class="text-gray-700 dark:text-gray-300">
+                {post.data.description}
+              </p>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -16,14 +16,16 @@ import '../styles/global.css';
     <title>Joseph Turner</title>
     <script>
       document.documentElement.classList.toggle(
-        "dark",
-        localStorage.theme === "dark" ||
-          (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+        'dark',
+        localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)')
+              .matches)
       );
     </script>
   </head>
   <body
-    class="bg-white text-slate-800 dark:bg-slate-700 dark:text-white"
+    class="relative bg-white text-gray-950 dark:bg-gray-950 dark:text-white"
   >
     <Header />
     <slot />
