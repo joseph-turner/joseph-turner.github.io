@@ -78,8 +78,8 @@ const posts = (await getCollection(
 )) as CollectionEntry<'blog'>[];
 posts.sort(
   (a, b) =>
-    new Date(b.data.date).getTime() -
-    new Date(a.data.date).getTime()
+    new Date(a.data.date).getTime() -
+    new Date(b.data.date).getTime()
 );
 ---
 
