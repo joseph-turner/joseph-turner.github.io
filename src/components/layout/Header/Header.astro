@@ -1,5 +1,4 @@
 ---
-import ThemeControl from '../../common/ThemeControl/ThemeControl.astro';
 import HeaderLink from './HeaderLink.astro';
 ---
 
@@ -7,7 +6,7 @@ import HeaderLink from './HeaderLink.astro';
   class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 shadow-sm backdrop-blur dark:border-gray-900 dark:bg-gray-950/80"
 >
   <div
-    class="container mx-auto flex items-center justify-between px-6 py-3"
+    class="container mx-auto flex items-center justify-end px-6 py-3 md:justify-between"
   >
     <!-- Logo / Brand -->
     <!-- <a
@@ -19,12 +18,12 @@ import HeaderLink from './HeaderLink.astro';
     <!-- Desktop Navigation -->
     <nav class="hidden gap-8 text-base font-medium md:flex">
       <HeaderLink href="/">Home</HeaderLink>
-      <!-- <HeaderLink href="/resume">Resume</HeaderLink>
+      <HeaderLink href="/resume">Resume</HeaderLink>
+      <!--
       <HeaderLink href="/portfolio">Portfolio</HeaderLink> -->
       <HeaderLink href="/blog">Blog</HeaderLink>
     </nav>
     <div class="flex items-center gap-2">
-      <ThemeControl />
       <!-- Mobile Menu Button -->
       <button
         class="text-gray-700 focus:outline-none md:hidden dark:text-white"
@@ -50,12 +49,11 @@ import HeaderLink from './HeaderLink.astro';
   <nav class="hidden md:hidden" id="mobile-menu">
     <ul class="space-y-2 px-4 pt-2 pb-4">
       <li><HeaderLink href="/">Home</HeaderLink></li>
-      <li><HeaderLink href="/resume">Resume</HeaderLink></li>
+      <!-- <li><HeaderLink href="/resume">Resume</HeaderLink></li>
       <li>
         <HeaderLink href="/portfolio">Portfolio</HeaderLink>
-      </li>
+      </li> -->
       <li><HeaderLink href="/blog">Blog</HeaderLink></li>
-      <HeaderLink href="/blog">Blog</HeaderLink>
     </ul>
     <!-- <li>
         <HeaderLink href="/contact">Contact</HeaderLink>

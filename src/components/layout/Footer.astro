@@ -1,5 +1,6 @@
 ---
 import Icon from '../common/Icon.astro';
+import ThemeControl from '../common/ThemeControl/ThemeControl.astro';
 
 const year = new Date().getFullYear();
 ---
@@ -52,5 +53,6 @@ const year = new Date().getFullYear();
     <p class="text-center text-xs text-gray-400">
       © {year} Joseph Turner. All rights reserved.
     </p>
+    <ThemeControl />
   </div>
 </footer>

@@ -1,0 +1,26 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { jobs } from './jobs.js';
+import JobTimelineIsland from '@components/common/JobTimelineIsland.astro';
+---
+
+<Layout>
+  <main class="mx-auto max-w-screen-lg px-4 py-16">
+    <section class="container mx-auto mb-12 px-6">
+      <h1 class="text-3xl font-extrabold">Resume</h1>
+      <p class="mt-4 text-gray-700 dark:text-gray-300">
+        Joseph Turner is a Senior Front End Developer with 13+
+        years of experience, specializing in modern web
+        technologies and performance optimization. He has a
+        proven track record of improving web applications through
+        technical leadership, process implementation, and
+        performance optimization.
+      </p>
+    </section>
+
+    <section class="container mx-auto mb-12 px-6">
+      <h2 class="text-2xl font-bold">Professional Experience</h2>
+      <JobTimelineIsland client:visible jobs={jobs} />
+    </section>
+  </main>
+</Layout>

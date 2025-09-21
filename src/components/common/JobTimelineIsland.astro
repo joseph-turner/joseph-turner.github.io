@@ -1,0 +1,203 @@
+---
+// Vanilla JS Astro Island for timeline + modal
+import type { Job } from '../../pages/resume/jobs';
+const { jobs = [] }: { jobs?: Job[] } = Astro.props;
+---
+
+<div id="job-timeline-island" data-jobs={JSON.stringify(jobs)}>
+  <div class="relative mt-8">
+    <div
+      class="absolute top-0 bottom-0 left-6 w-0.5 bg-gray-200 dark:bg-gray-800"
+    >
+    </div>
+    <ol class="ml-12 space-y-8">
+      {
+        jobs.map((job, idx) => (
+          <li class="relative" data-job-index={idx}>
+            <span class="absolute top-1 -left-9 flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-900">
+              <svg
+                class="h-3 w-3 text-gray-600"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M10 2a1 1 0 00-1 1v6H3a1 1 0 000 2h6v6a1 1 0 002 0v-6h6a1 1 0 000-2h-6V3a1 1 0 00-1-1z" />
+              </svg>
+            </span>
+            <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950">
+              <div class="flex items-start justify-between">
+                <div>
+                  <button
+                    class="cursor-pointer text-left text-lg font-semibold text-gray-900 hover:underline dark:text-white"
+                    data-job-open={idx}
+                    aria-haspopup="dialog"
+                    aria-controls="job-modal"
+                  >
+                    {job.title}
+                  </button>
+                  <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                    {job.company}
+                  </p>
+                </div>
+                <div class="text-sm text-gray-500 dark:text-gray-400">
+                  {job.startDate} — {job.endDate}
+                </div>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+  <!-- Modal markup -->
+  <div
+    id="job-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center px-4"
+  >
+    <div
+      id="job-modal-overlay"
+      class="bg-opacity-40 fixed inset-0 flex flex-col items-center justify-around bg-black"
+    >
+    </div>
+    <div
+      class="fixed top-1/2 left-1/2 z-10 flex w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg dark:bg-gray-950"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="job-modal-title"
+    >
+      <div id="job-modal-content"></div>
+    </div>
+  </div>
+  <script>
+    import type { Job } from '../../pages/resume/jobs';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const timelineRoot = document.getElementById(
+        'job-timeline-island'
+      );
+      const jobs: Job[] = timelineRoot
+        ? JSON.parse(timelineRoot.getAttribute('data-jobs')!)
+        : [];
+      const modal = timelineRoot
+        ? timelineRoot.querySelector('#job-modal')
+        : null;
+      const overlay = timelineRoot
+        ? timelineRoot.querySelector('#job-modal-overlay')
+        : null;
+      const content = timelineRoot
+        ? timelineRoot.querySelector('#job-modal-content')
+        : null;
+      const focusableSelector =
+        'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+      let lastFocused: Element | null = null;
+      function renderModal(idx: number) {
+        if (idx === null || !jobs[idx] || !content) return;
+        const job = jobs[idx];
+        const accomplishmentsHtml = job.accomplishments.length
+          ? `<h4 class=\"mt-4 text-sm font-medium\">Key accomplishments</h4><ul class=\"list-disc list-inside text-sm mt-2\">${job.accomplishments.map((a) => `<li>${a}</li>`).join('')}</ul>`
+          : '';
+        const skillsHtml = job.skills.length
+          ? `<h4 class=\"mt-4 text-sm font-medium\">Skills</h4><ul class=\"flex flex-wrap gap-2 mt-2\">${job.skills.map((s: string) => `<li class=\"text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded\">${s}</li>`).join('')}</ul>`
+          : '';
+        content.innerHTML = `
+      <div>
+        <h3 id=\"job-modal-title\" class=\"text-xl font-semibold\">${job.title}</h3>
+        <p class=\"text-sm text-gray-600 dark:text-gray-300\">${job.company} • ${job.startDate} - ${job.endDate}</p>
+        <p class=\"mt-3 text-sm\">${job.description}</p>
+        ${accomplishmentsHtml}
+        ${skillsHtml}
+        <div class=\"mt-6 flex justify-end\">
+          <button data-modal-close class=\"px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded hover:bg-gray-300\" aria-label=\"Close\">Close</button>
+        </div>
+      </div>
+    `;
+      }
+      function openModal(idx: number, trigger: Element) {
+        if (!modal || !overlay) return;
+        lastFocused = trigger;
+        renderModal(idx);
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        overlay.addEventListener('click', handleOverlayClick);
+        document.addEventListener('keydown', handleKeyDown);
+        const focusable = modal.querySelectorAll(
+          focusableSelector
+        );
+        if (
+          focusable.length &&
+          focusable[0] instanceof HTMLElement
+        )
+          focusable[0].focus();
+      }
+      function closeModal() {
+        if (!modal || !overlay || !content) return;
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+        overlay.removeEventListener('click', handleOverlayClick);
+        document.removeEventListener('keydown', handleKeyDown);
+        if (lastFocused && lastFocused instanceof HTMLElement)
+          lastFocused.focus();
+        content.innerHTML = '';
+      }
+      function handleOverlayClick(e: Event) {
+        if (!overlay) return;
+        const target = e.target;
+        if (target === overlay) closeModal();
+      }
+      function handleKeyDown(e: KeyboardEvent) {
+        if (!modal) return;
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closeModal();
+          return;
+        }
+        if (e.key === 'Tab') {
+          const focusable = modal.querySelectorAll(
+            focusableSelector
+          );
+          if (focusable.length === 0) {
+            e.preventDefault();
+            return;
+          }
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (
+            first instanceof HTMLElement &&
+            last instanceof HTMLElement
+          ) {
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (
+              !e.shiftKey &&
+              document.activeElement === last
+            ) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
+      }
+      if (timelineRoot) {
+        timelineRoot.addEventListener('click', function (e) {
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          const openBtn = target.closest('[data-job-open]');
+          if (openBtn) {
+            const idx = parseInt(
+              openBtn.getAttribute('data-job-open')!,
+              10
+            );
+            openModal(idx, openBtn);
+            return;
+          }
+          const closeBtn = target.closest('[data-modal-close]');
+          if (closeBtn) {
+            closeModal();
+            return;
+          }
+        });
+      }
+    });
+  </script>
+</div>
