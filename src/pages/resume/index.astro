@@ -1,7 +1,10 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import { jobs } from './jobs.js';
-import JobTimelineIsland from '@components/common/JobTimelineIsland.astro';
+import ResumeTimeline from '../../components/ResumeTimeline.tsx';
+import { SkillsGrid } from '../../components/SkillsGrid';
+
+const skills = jobs.flatMap((job) => job.skills);
 ---
 
 <Layout>
@@ -18,9 +21,15 @@ import JobTimelineIsland from '@components/common/JobTimelineIsland.astro';
       </p>
     </section>
 
-    <section class="container mx-auto mb-12 px-6">
-      <h2 class="text-2xl font-bold">Professional Experience</h2>
-      <JobTimelineIsland client:visible jobs={jobs} />
+    <ResumeTimeline client:load jobs={jobs} />
+
+    <section class="container mx-auto my-12 px-6">
+      <h2 class="text-2xl font-extrabold">Skills</h2>
+      <p class="mt-4 text-gray-700 dark:text-gray-300">
+        A collection of skills and technologies I've used in my
+        career.
+      </p>
+      <SkillsGrid client:load skills={skills} />
     </section>
   </main>
 </Layout>

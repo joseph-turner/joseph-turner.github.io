@@ -6,14 +6,24 @@
     "prettier.config.mjs",
     "stylelint.config.mjs"
   ],
-  "exclude": ["dist"],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@pages/*": ["src/pages/*"]
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }
