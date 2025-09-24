@@ -2,18 +2,18 @@
 import Layout from './Layout.astro';
 
 // Accept loose props to avoid issues with generated types during build
-const { frontmatter, Content } = Astro.props as {
-  frontmatter: any;
+const { Content, frontmatter } = Astro.props as {
   Content: any;
+  frontmatter: any;
 };
 
 function formatDate(dateStr: string) {
   try {
     const d = new Date(dateStr);
     return d.toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'long',
       day: 'numeric',
+      month: 'long',
+      year: 'numeric',
     });
   } catch (e) {
     return dateStr;
@@ -23,7 +23,7 @@ function formatDate(dateStr: string) {
 
 <Layout>
   <article
-    class="prose dark:prose-invert mx-auto max-w-3xl px-4 py-16"
+    class="mx-auto prose max-w-3xl px-4 py-16 dark:prose-invert"
   >
     <header class="mb-6">
       <a
@@ -40,7 +40,7 @@ function formatDate(dateStr: string) {
       >
     </header>
 
-    <div class="prose dark:prose-invert max-w-none">
+    <div class="prose max-w-none dark:prose-invert">
       <Content />
     </div>
   </article>

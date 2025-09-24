@@ -1,6 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
 import BlogPost from '@layouts/BlogPost.astro';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -38,4 +38,4 @@ const rendered = await (post as any).render();
 const Content = rendered.Content;
 ---
 
-<BlogPost frontmatter={post.data} Content={Content} />
+<BlogPost Content={Content} frontmatter={post.data} />

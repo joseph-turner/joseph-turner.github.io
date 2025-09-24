@@ -7,15 +7,6 @@ const config = {
   ],
   ignoreFiles: ['**/*.svg'],
   rules: {
-    'comment-empty-line-before': [
-      'always',
-      {
-        except: ['first-nested'],
-        ignore: ['after-comment', 'stylelint-commands'],
-      },
-    ],
-    'import-notation': 'string',
-    'max-nesting-depth': 3,
     'at-rule-no-deprecated': [
       true,
       { ignoreAtRules: ['apply'] },
@@ -35,6 +26,15 @@ const config = {
         ],
       },
     ],
+    'comment-empty-line-before': [
+      'always',
+      {
+        except: ['first-nested'],
+        ignore: ['after-comment', 'stylelint-commands'],
+      },
+    ],
+    'import-notation': 'string',
+    'max-nesting-depth': 3,
   },
 };
 

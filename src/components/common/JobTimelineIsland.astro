@@ -4,7 +4,7 @@ import type { Job } from '../../pages/resume/jobs';
 const { jobs = [] }: { jobs?: Job[] } = Astro.props;
 ---
 
-<div id="job-timeline-island" data-jobs={JSON.stringify(jobs)}>
+<div data-jobs={JSON.stringify(jobs)} id="job-timeline-island">
   <div class="relative mt-8">
     <div
       class="absolute top-0 bottom-0 left-6 w-0.5 bg-gray-200 dark:bg-gray-800"
@@ -28,10 +28,10 @@ const { jobs = [] }: { jobs?: Job[] } = Astro.props;
               <div class="flex items-start justify-between">
                 <div>
                   <button
+                    aria-controls="job-modal"
+                    aria-haspopup="dialog"
                     class="cursor-pointer text-left text-lg font-semibold text-gray-900 hover:underline dark:text-white"
                     data-job-open={idx}
-                    aria-haspopup="dialog"
-                    aria-controls="job-modal"
                   >
                     {job.title}
                   </button>
@@ -51,19 +51,19 @@ const { jobs = [] }: { jobs?: Job[] } = Astro.props;
   </div>
   <!-- Modal markup -->
   <div
-    id="job-modal"
     class="fixed inset-0 z-50 hidden items-center justify-center px-4"
+    id="job-modal"
   >
     <div
-      id="job-modal-overlay"
       class="bg-opacity-40 fixed inset-0 flex flex-col items-center justify-around bg-black"
+      id="job-modal-overlay"
     >
     </div>
     <div
+      aria-labelledby="job-modal-title"
+      aria-modal="true"
       class="fixed top-1/2 left-1/2 z-10 flex w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg dark:bg-gray-950"
       role="dialog"
-      aria-modal="true"
-      aria-labelledby="job-modal-title"
     >
       <div id="job-modal-content"></div>
     </div>

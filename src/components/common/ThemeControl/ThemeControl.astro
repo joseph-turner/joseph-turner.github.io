@@ -13,28 +13,28 @@ const themeBtnBase =
 >
   <button
     aria-label="Set system Mode"
+    aria-pressed="false"
     class={classNames(themeBtnBase)}
     id="systemButton"
     tabindex="0"
-    aria-pressed="false"
   >
     <Icon className={iconClasses} name="computer-line" />
   </button>
   <button
     aria-label="Set Light Mode"
+    aria-pressed="false"
     class={classNames(themeBtnBase)}
     id="lightButton"
     tabindex="0"
-    aria-pressed="false"
   >
     <Icon className={iconClasses} name="sun-fill" />
   </button>
   <button
     aria-label="Set Dark Mode"
+    aria-pressed="false"
     class={classNames(themeBtnBase)}
     id="darkButton"
     tabindex="0"
-    aria-pressed="false"
   >
     <Icon className={iconClasses} name="moon-fill" />
   </button>
@@ -44,25 +44,22 @@ const themeBtnBase =
 
 <script>
   class ThemeControl extends HTMLElement {
-    updateTheme(theme?: string) {
-      if (theme !== 'system') {
-        document.documentElement.classList.toggle(
-          'dark',
-          theme === 'dark'
-        );
-        localStorage.theme = theme;
-        this.setActiveIcon();
-        return;
-      }
-      localStorage.removeItem('theme');
-      document.documentElement.classList.toggle(
-        'dark',
-        localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) &&
-            window.matchMedia('(prefers-color-scheme: dark)')
-              .matches)
-      );
+    connectedCallback() {
       this.setActiveIcon();
+      this.querySelector('#systemButton')?.addEventListener(
+        'click',
+        () => this.updateTheme('system')
+      );
+
+      this.querySelector('#darkButton')?.addEventListener(
+        'click',
+        () => this.updateTheme('dark')
+      );
+
+      this.querySelector('#lightButton')?.addEventListener(
+        'click',
+        () => this.updateTheme('light')
+      );
     }
 
     setActiveIcon() {
@@ -101,22 +98,25 @@ const themeBtnBase =
       }
     }
 
-    connectedCallback() {
+    updateTheme(theme?: string) {
+      if (theme !== 'system') {
+        document.documentElement.classList.toggle(
+          'dark',
+          theme === 'dark'
+        );
+        localStorage.theme = theme;
+        this.setActiveIcon();
+        return;
+      }
+      localStorage.removeItem('theme');
+      document.documentElement.classList.toggle(
+        'dark',
+        localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)')
+              .matches)
+      );
       this.setActiveIcon();
-      this.querySelector('#systemButton')?.addEventListener(
-        'click',
-        () => this.updateTheme('system')
-      );
-
-      this.querySelector('#darkButton')?.addEventListener(
-        'click',
-        () => this.updateTheme('dark')
-      );
-
-      this.querySelector('#lightButton')?.addEventListener(
-        'click',
-        () => this.updateTheme('light')
-      );
     }
   }
 

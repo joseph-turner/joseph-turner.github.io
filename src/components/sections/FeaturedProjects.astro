@@ -4,7 +4,7 @@ import projects from '../../data/projects.ts';
 const maxVisibleProjects = 3; // Show 3 featured projects by default
 ---
 
-<section id="projects" class="bg-slate-700 py-16">
+<section class="bg-slate-700 py-16" id="projects">
   <div class="container mx-auto px-6">
     <h2
       class="mb-8 text-center text-3xl font-bold text-slate-50"
@@ -21,9 +21,9 @@ const maxVisibleProjects = 3; // Show 3 featured projects by default
         projects.slice(0, maxVisibleProjects).map((project) => (
           <div class="overflow-hidden rounded-2xl bg-white shadow-lg transition hover:scale-105">
             <img
-              src={project.image}
               alt={project.title}
               class="h-48 w-full object-cover"
+              src={project.image}
             />
 
             <div class="p-6">
@@ -45,9 +45,9 @@ const maxVisibleProjects = 3; // Show 3 featured projects by default
               <div class="flex gap-4">
                 {project.live && (
                   <a
+                    class="text-blue-500 hover:underline"
                     href={project.live}
                     target="_blank"
-                    class="text-blue-500 hover:underline"
                   >
                     Live Demo
                   </a>
@@ -55,9 +55,9 @@ const maxVisibleProjects = 3; // Show 3 featured projects by default
 
                 {project.github && (
                   <a
+                    class="text-gray-500 hover:underline"
                     href={project.github}
                     target="_blank"
-                    class="text-gray-500 hover:underline"
                   >
                     GitHub
                   </a>
@@ -71,8 +71,8 @@ const maxVisibleProjects = 3; // Show 3 featured projects by default
 
     <div class="mt-12 text-center">
       <a
-        href="/projects"
         class="inline-block rounded-2xl bg-blue-500 px-6 py-3 text-white hover:bg-blue-600"
+        href="/projects"
       >
         View All Projects
       </a>

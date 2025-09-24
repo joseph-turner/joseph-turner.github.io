@@ -1,8 +1,9 @@
 ---
-import Header from '@components/layout/Header/Header.astro';
 import Footer from '@components/layout/Footer.astro';
+import Header from '@components/layout/Header/Header.astro';
 import '@fontsource-variable/archivo/standard.css';
 import '@fontsource-variable/archivo/standard-italic.css';
+
 import '../styles/global.css';
 ---
 
@@ -10,9 +11,9 @@ import '../styles/global.css';
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta content="width=device-width" name="viewport" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta content={Astro.generator} name="generator" />
     <title>Joseph Turner</title>
     <script>
       document.documentElement.classList.toggle(
