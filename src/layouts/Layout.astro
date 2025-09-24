@@ -13,6 +13,12 @@ import '../styles/global.css';
     <meta charset="UTF-8" />
     <meta content="width=device-width" name="viewport" />
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Joseph Turner's RSS Feed"
+      href={new URL('rss.xml', Astro.site).toString()}
+    />
     <meta content={Astro.generator} name="generator" />
     <title>Joseph Turner</title>
     <script>
