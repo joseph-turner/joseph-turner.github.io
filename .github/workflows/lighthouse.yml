@@ -1,11 +1,14 @@
 name: Lighthouse CI
 
 on:
-  deployment_status:
+  workflow_run:
+    workflows: ["Deploy Astro site to Pages"] # 👈 must match your deploy workflow's `name`
+    types:
+      - completed
 
 jobs:
   lhci:
-    if: github.event.deployment_status.state == 'success'
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
