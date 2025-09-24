@@ -1,10 +1,31 @@
 ---
-import RecentPost from './RecentPost.astro';
----
+import { getCollection, type CollectionEntry } from "astro:content";
 
-<section>
-  <h2>Recent Posts</h2>
-  <ul>
-    <RecentPost />
+const posts = ((await getCollection(
+  'blog'
+)) as CollectionEntry<'blog'>[])
+  .sort(
+  (a, b) =>
+    new Date(b.data.date).getTime() -
+    new Date(a.data.date).getTime()
+  )
+  .slice(0, 3); // limit to 3 recent posts
+---
+<section class="mx-auto max-w-4xl my-16 px-4">
+  <h2 class="text-2xl font-bold mb-6">Recent Blog Posts</h2>
+  <ul class="flex">
+    {posts.map(post => (
+      <li class="not-first:border-l border-primary-200 not-first:pl-6 not-last:pr-4 pt-2 pb-4 basis-1/3">
+        <a href={`/blog/${post.slug}/`} class="block group">
+          <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600">
+            {post.data.title}
+          </h3>
+          <p class="mt-2 text-gray-600 prose prose-blog">{post.data.description}</p>
+          <time datetime={new Date(post.data.date).toISOString()} class="block mt-2 text-sm text-gray-500">
+            {new Date(post.data.date).toLocaleDateString()}
+          </time>
+        </a>
+      </li>
+    ))}
   </ul>
 </section>

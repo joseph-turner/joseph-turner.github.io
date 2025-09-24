@@ -1,6 +1,6 @@
 ---
 title: 'Hello, world'
-date: '2025-09-17'
+date: '2025-09-12'
 tags: ['intro', 'astro']
 description: 'An introduction to the blog and what to expect'
 slug: 'hello-world'
