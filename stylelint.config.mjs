@@ -5,7 +5,7 @@ const config = {
     'stylelint-config-standard',
     'stylelint-config-clean-order',
   ],
-  ignoreFiles: ['**/*.svg'],
+  ignoreFiles: ['**/*.svg', '.astro/**', 'build/**', 'dist/**'],
   rules: {
     'at-rule-no-deprecated': [
       true,
@@ -17,6 +17,7 @@ const config = {
         ignoreAtRules: [
           'apply',
           'custom-variant',
+          'plugin',
           'responsive',
           'screen',
           'tailwind',

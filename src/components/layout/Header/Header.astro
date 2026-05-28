@@ -3,30 +3,43 @@ import HeaderLink from './HeaderLink.astro';
 ---
 
 <header
-  class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 shadow-sm backdrop-blur dark:border-gray-900 dark:bg-gray-950/80"
+  class="sticky top-0 z-50 w-full border-b border-gray-200/70 bg-white/85 backdrop-blur-xl dark:border-white/10 dark:bg-gray-950/85"
 >
   <div
-    class="container mx-auto flex items-center justify-end px-6 py-3 md:justify-between"
+    class="container mx-auto flex items-center justify-between px-6 py-3"
   >
-    <!-- Logo / Brand -->
-    <!-- <a
-      class="text-2xl font-extrabold tracking-tight text-primary-600 dark:text-primary-400"
+    <a
+      class="group inline-flex items-center gap-3 rounded-md text-gray-950 transition hover:text-primary-700 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:outline-none dark:text-white dark:hover:text-primary-300"
       href="/"
     >
-      Joseph Turner
-    </a> -->
-    <!-- Desktop Navigation -->
-    <nav class="hidden gap-8 text-base font-medium md:flex">
+      <span
+        class="flex h-9 w-9 items-center justify-center rounded-md bg-gray-950 text-sm font-black text-white shadow-sm transition group-hover:bg-primary-700 dark:bg-white dark:text-gray-950 dark:group-hover:bg-primary-200"
+      >
+        JT
+      </span>
+      <span class="hidden leading-tight sm:block">
+        <span class="block text-sm font-bold">Joseph Turner</span
+        >
+        <span
+          class="block text-xs font-medium text-gray-500 dark:text-gray-400"
+        >
+          Senior Front-End Developer
+        </span>
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/resume">Resume</HeaderLink>
-      <!--
-      <HeaderLink href="/portfolio">Portfolio</HeaderLink> -->
       <HeaderLink href="/blog">Blog</HeaderLink>
     </nav>
+
     <div class="flex items-center gap-2">
-      <!-- Mobile Menu Button -->
       <button
-        class="text-gray-700 focus:outline-none md:hidden dark:text-white"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        class="rounded-md p-2 text-gray-700 transition hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:outline-none md:hidden dark:text-white dark:hover:bg-white/10"
         id="mobile-menu-button"
       >
         <svg
@@ -45,22 +58,18 @@ import HeaderLink from './HeaderLink.astro';
       </button>
     </div>
   </div>
-  <!-- Mobile Navigation Menu -->
-  <nav class="hidden md:hidden" id="mobile-menu">
-    <ul class="space-y-2 px-4 pt-2 pb-4">
+  <nav
+    class="hidden border-t border-gray-200/70 bg-white/95 md:hidden dark:border-white/10 dark:bg-gray-950/95"
+    id="mobile-menu"
+  >
+    <ul class="space-y-1 px-4 pt-3 pb-4">
       <li><HeaderLink href="/">Home</HeaderLink></li>
-      <!-- <li><HeaderLink href="/resume">Resume</HeaderLink></li>
-      <li>
-        <HeaderLink href="/portfolio">Portfolio</HeaderLink>
-      </li> -->
+      <li><HeaderLink href="/resume">Resume</HeaderLink></li>
       <li><HeaderLink href="/blog">Blog</HeaderLink></li>
     </ul>
-    <!-- <li>
-        <HeaderLink href="/contact">Contact</HeaderLink>
-      </li> -->
   </nav>
 </header>
-<!-- Inline Script for Mobile Menu Toggle -->
+
 <script is:inline>
   const mobileMenuButton = document.getElementById(
     'mobile-menu-button'
@@ -68,5 +77,9 @@ import HeaderLink from './HeaderLink.astro';
   const mobileMenu = document.getElementById('mobile-menu');
   mobileMenuButton.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
+    mobileMenuButton.setAttribute(
+      'aria-expanded',
+      String(!mobileMenu.classList.contains('hidden'))
+    );
   });
 </script>

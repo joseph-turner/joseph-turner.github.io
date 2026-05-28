@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -120,24 +121,24 @@
 @layer components {
   /* Base typography for blog content */
   .prose {
-    @apply prose prose-lg dark:prose-invert max-w-none leading-relaxed;
+    @apply prose prose-lg max-w-none leading-relaxed dark:prose-invert;
   }
 
   /* Headings */
   .prose h1 {
-    @apply mb-4 mt-8 text-4xl font-extrabold tracking-tight;
+    @apply mt-8 mb-4 text-4xl font-extrabold tracking-tight;
   }
 
   .prose h2 {
-    @apply mb-4 mt-10 text-3xl font-bold tracking-tight;
+    @apply mt-10 mb-4 text-3xl font-bold tracking-tight;
   }
 
   .prose h3 {
-    @apply mb-3 mt-8 text-2xl font-semibold;
+    @apply mt-8 mb-3 text-2xl font-semibold;
   }
 
   .prose h4 {
-    @apply mb-2 mt-6 text-xl font-semibold;
+    @apply mt-6 mb-2 text-xl font-semibold;
   }
 
   /* Paragraphs */
@@ -147,7 +148,7 @@
 
   /* Links */
   .prose a {
-    @apply text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium underline underline-offset-2;
+    @apply font-medium text-primary-600 underline underline-offset-2 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300;
   }
 
   /* Lists */
@@ -161,7 +162,7 @@
 
   /* Blockquotes */
   .prose blockquote {
-    @apply border-primary-500 my-6 border-l-4 pl-4 italic text-gray-600 dark:text-gray-300;
+    @apply my-6 border-l-4 border-primary-500 pl-4 text-gray-600 italic dark:text-gray-300;
   }
 
   /* Code */

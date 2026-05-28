@@ -1,12 +1,28 @@
 ---
 import cx from 'classnames';
-const { className, href } = Astro.props;
+
+const { className, href } = Astro.props as {
+  className?: string;
+  href: string;
+};
+
+const pathname = Astro.url.pathname;
+const isActive =
+  href === '/' ? pathname === href : pathname.startsWith(href);
+
 const classes = cx(
-  'text-gray-700 dark:text-white transition hover:text-primary-600',
+  'rounded-md px-3 py-2 text-sm font-semibold transition hover:text-primary-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 dark:hover:text-primary-300',
+  isActive
+    ? 'bg-primary-50 text-primary-700 dark:bg-primary-500/10 dark:text-primary-300'
+    : 'text-gray-600 dark:text-gray-300',
   className
 );
 ---
 
-<a class={classes} href={href}>
+<a
+  aria-current={isActive ? 'page' : undefined}
+  class={classes}
+  href={href}
+>
   <slot />
 </a>

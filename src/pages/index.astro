@@ -1,22 +1,23 @@
 ---
 import About from '@components/sections/About/About.astro';
+import FeaturedProjects from '@components/sections/FeaturedProjects.astro';
 import Hero from '@components/sections/Hero.astro';
 import Layout from '@layouts/Layout.astro';
 
-import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
 import RecentPosts from '../components/sections/RecentPosts/RecentPosts.astro';
 ---
 
 <Layout>
   <section
-    class="relative flex min-h-[70vh] flex-col items-center justify-center bg-gray-100 px-4 dark:bg-gray-900"
+    class="relative overflow-hidden bg-white dark:bg-gray-950"
   >
     <Hero />
   </section>
   <section
-    class="relative z-10 bg-white px-4 py-16 dark:bg-gray-950"
+    class="relative z-10 border-y border-gray-200/70 bg-gray-50 px-4 py-20 dark:border-white/10 dark:bg-gray-900/40"
   >
     <About />
   </section>
+  <FeaturedProjects />
   <RecentPosts />
 </Layout>

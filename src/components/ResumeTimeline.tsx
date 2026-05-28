@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'preact/hooks';
 import Modal from './Modal';
-import type { Job } from '../pages/resume/jobs';
+import type { Job } from '../data/resume/jobs';
 
 interface ResumeTimelineProps {
   jobs: Job[];
@@ -72,10 +72,7 @@ export default function ResumeTimeline({
               onClick={(e) => openModal(job, e.currentTarget)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  openModal(
-                    job,
-                    e.currentTarget as HTMLButtonElement
-                  );
+                  openModal(job, e.currentTarget);
                 }
               }}
             >

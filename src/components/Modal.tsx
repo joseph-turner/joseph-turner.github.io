@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'preact/hooks';
-import type { Job } from '../pages/resume/jobs';
+import type { Job } from '../data/resume/jobs';
 
 interface ModalProps {
   job: Job;

@@ -6,7 +6,7 @@ const {
   onClose = () => {},
   selectedIndex = null,
 } = Astro.props;
-import type { Job } from '../../pages/resume/jobs';
+import type { Job } from '../../data/resume/jobs';
 
 const job: Job | null =
   selectedIndex !== null ? jobs[selectedIndex] : null;
@@ -79,7 +79,7 @@ const job: Job | null =
   // Focus trap and ESC close logic
   export default () => {
     if (typeof window === 'undefined') return;
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = () => {
       //   if (e.key === 'Escape') onClose();
       // Focus trap logic can be added here
     };

@@ -1,69 +1,132 @@
 ---
+import ExperienceTimer from '../ExperienceTimer';
 import Button from '../common/Button.astro';
 import Icon from '../common/Icon.astro';
+import { getEarliestJobStartDateTime } from '../../lib/experience';
+import { jobs } from '../../data/resume/jobs';
+
+const proofPoints = [
+  { label: 'React / Next.js', value: 'Modern app architecture' },
+  { label: 'Performance', value: 'Fast, resilient interfaces' },
+  { label: 'Design-minded', value: 'Polished product details' },
+];
+
+const firstWebDeveloperStartDateTime =
+  getEarliestJobStartDateTime(jobs);
 ---
 
-<div class="pointer-events-none absolute inset-0 select-none">
-  <!-- Subtle background gradient, Vercel-esque -->
-  <div
-    class="h-full w-full bg-gradient-to-br from-primary-100 via-white to-secondary-100 opacity-80 dark:from-gray-900 dark:via-gray-950 dark:to-primary-900"
-  >
-  </div>
-</div>
 <div
-  class="relative z-10 mx-auto w-full max-w-2xl py-24 text-center"
+  class="pointer-events-none absolute inset-0 overflow-hidden select-none"
 >
-  <h1
-    class="mb-6 font-heading text-5xl font-extrabold tracking-tight text-gray-900 text-shadow-xs md:text-7xl dark:text-white"
-  >
-    Joseph Turner
-  </h1>
-  <p
-    class="mb-8 text-xl font-medium text-gray-700 md:text-2xl dark:text-gray-300"
-  >
-    Senior Front-End Developer<br />
-    Building scalable, high-performance web apps with modern frameworks.
-  </p>
   <div
-    class="mb-8 flex flex-col justify-center gap-4 sm:flex-row"
+    class="absolute inset-0 bg-[linear-gradient(to_right,rgba(38,144,215,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(38,144,215,0.08)_1px,transparent_1px)] bg-[size:4rem_4rem] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)]"
   >
-    <Button
-      as="a"
-      href="/resume"
-      variant="primary"
-      size="md"
-      class="inline-block shadow"
-    >
-      Interactive Resume
-    </Button>
-    <Button
-      as="a"
-      class="inline-block bg-secondary-600 shadow hover:bg-secondary-700"
-      download="Joseph_Turner_Resume.pdf"
-      href="/resume.pdf"
-      size="md"
-    >
-      Resume PDF
-    </Button>
+  </div>
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(38,144,215,0.18),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(251,147,115,0.18),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.78))] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(38,144,215,0.22),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(251,147,115,0.18),transparent_28%),linear-gradient(180deg,rgba(5,6,6,0.86),rgba(5,6,6,0.96))]"
+  >
   </div>
 </div>
-<div class="mt-4 flex justify-center gap-6">
-  <a
-    aria-label="GitHub"
-    class="text-gray-900 transition-colors hover:text-primary-500"
-    href="https://github.com/joseph-turner"
-    rel="noopener"
-    target="_blank"
-  >
-    <Icon className="h-10 w-10" name="github-fill" />
-  </a>
-  <a
-    aria-label="LinkedIn"
-    class="text-gray-900 transition-colors hover:text-secondary-500"
-    href="https://www.linkedin.com/in/joseph-turner-3b8ab116/"
-    rel="noopener"
-    target="_blank"
-  >
-    <Icon className="h-10 w-10" name="linkedin-box-fill" />
-  </a>
+
+<div
+  class="relative z-10 mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28"
+>
+  <div>
+    <p
+      class="mb-5 inline-flex rounded-full border border-primary-200 bg-white/80 px-4 py-2 text-sm font-bold text-primary-700 shadow-sm dark:border-primary-400/20 dark:bg-white/5 dark:text-primary-300"
+    >
+      Senior Front-End Developer
+    </p>
+    <h1
+      class="max-w-3xl font-heading text-5xl leading-none font-extrabold tracking-tight text-gray-950 md:text-7xl dark:text-white"
+    >
+      Joseph Turner
+    </h1>
+    <p
+      class="mt-6 max-w-2xl text-xl leading-8 font-medium text-gray-700 md:text-2xl md:leading-9 dark:text-gray-300"
+    >
+      I build fast, scalable web apps with the craft of a
+      designer and the judgment of an engineer.
+    </p>
+
+    <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+      <Button
+        as="a"
+        href="/resume"
+        variant="primary"
+        size="md"
+        class="rounded-md px-6 shadow-sm shadow-primary-900/15"
+      >
+        Interactive Resume
+      </Button>
+      <Button
+        as="a"
+        download="Joseph_Turner_Resume.pdf"
+        href="/Joseph%20Turner%20Resume.pdf"
+        size="md"
+        variant="outline"
+      >
+        Resume PDF
+      </Button>
+    </div>
+
+    <div class="mt-8 flex gap-5">
+      <a
+        aria-label="GitHub"
+        class="rounded-md text-gray-500 transition hover:text-primary-600 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:outline-none dark:text-gray-400 dark:hover:text-primary-300"
+        href="https://github.com/joseph-turner"
+        rel="noopener"
+        target="_blank"
+      >
+        <Icon className="h-7 w-7" name="github-fill" />
+      </a>
+      <a
+        aria-label="LinkedIn"
+        class="rounded-md text-gray-500 transition hover:text-secondary-600 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:outline-none dark:text-gray-400 dark:hover:text-secondary-300"
+        href="https://www.linkedin.com/in/joseph-turner-3b8ab116/"
+        rel="noopener"
+        target="_blank"
+      >
+        <Icon className="h-7 w-7" name="linkedin-box-fill" />
+      </a>
+    </div>
+  </div>
+
+  <div class="relative">
+    <div
+      class="absolute -inset-4 rounded-2xl border border-primary-200/60 bg-white/40 shadow-2xl shadow-primary-900/10 dark:border-white/10 dark:bg-white/5"
+    >
+    </div>
+    <div
+      class="relative overflow-hidden rounded-xl border border-white/80 bg-white shadow-xl shadow-gray-900/10 dark:border-white/10 dark:bg-gray-900"
+    >
+      <img
+        alt="Joseph Turner"
+        class="aspect-[4/3] w-full object-cover"
+        src="/profile.jpg"
+      />
+      <div
+        class="grid gap-px border-t border-gray-200 bg-gray-200 sm:grid-cols-2 dark:border-white/10 dark:bg-white/10"
+      >
+        <div class="bg-white p-5 dark:bg-gray-900">
+          <ExperienceTimer
+            client:load
+            startDateTime={firstWebDeveloperStartDateTime}
+          />
+        </div>
+        {
+          proofPoints.map((item) => (
+            <div class="bg-white p-5 dark:bg-gray-900">
+              <p class="text-sm font-black text-gray-950 dark:text-white">
+                {item.label}
+              </p>
+              <p class="mt-1 text-xs leading-5 font-medium text-gray-500 dark:text-gray-400">
+                {item.value}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </div>

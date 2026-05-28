@@ -2,7 +2,6 @@ import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import prettierConfig from 'eslint-config-prettier/flat';
 import astro from 'eslint-plugin-astro';
-import perfectionist from 'eslint-plugin-perfectionist';
 import prettier from 'eslint-plugin-prettier';
 import security from 'eslint-plugin-security';
 import sonarjs from 'eslint-plugin-sonarjs';
@@ -15,12 +14,14 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig(
+  {
+    ignores: ['.astro/**', 'dist/**', 'node_modules/**'],
+  },
   ...compat.plugins('eslint-plugin-jsx-a11y'),
   eslint.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   tseslint.configs.stylisticTypeChecked,
   astro.configs.recommended,
-  perfectionist.configs['recommended-natural'],
   prettierConfig,
   security.configs.recommended,
   sonarjs.configs.recommended,
@@ -41,7 +42,20 @@ export default defineConfig(
       prettier,
     },
     rules: {
+      '@typescript-eslint/consistent-type-definitions': 'off',
       'prettier/prettier': 'warn',
+      'security/detect-object-injection': 'off',
+      'sonarjs/different-types-comparison': 'off',
+      'sonarjs/prefer-read-only-props': 'off',
+    },
+  },
+  {
+    files: ['**/*.astro'],
+    rules: {
+      '@typescript-eslint/no-empty-function': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
     },
   }
 ) satisfies ConfigArray;

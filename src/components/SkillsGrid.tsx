@@ -4,7 +4,7 @@ import {
   useEffect,
   useMemo,
 } from 'preact/hooks';
-import type { Skill } from '../pages/resume/skills';
+import type { Skill } from '../data/resume/skills';
 import Legend from './Legend';
 import SkillPopover from './SkillPopover';
 
@@ -18,7 +18,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 function getCategoryColor(category: string): string {
-  return CATEGORY_COLORS[category] || CATEGORY_COLORS.fallback;
+  return CATEGORY_COLORS[category] ?? CATEGORY_COLORS.fallback;
 }
 
 type SkillsGridProps = {
@@ -30,7 +30,7 @@ export function SkillsGrid({ skills }: SkillsGridProps) {
     null
   );
   const popoverRef = useRef<HTMLDivElement | null>(null);
-  const pillRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const pillRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   // Close popover on outside click/touch or ESC
   useEffect(() => {
@@ -41,9 +41,7 @@ export function SkillsGrid({ skills }: SkillsGridProps) {
         !popoverRef.current.contains(e.target as Node) &&
         activeSkill !== null &&
         pillRefs.current[activeSkill] &&
-        !pillRefs.current[activeSkill]!.contains(
-          e.target as Node
-        )
+        !pillRefs.current[activeSkill].contains(e.target as Node)
       ) {
         setActiveSkill(null);
       }
@@ -123,17 +121,14 @@ export function SkillsGrid({ skills }: SkillsGridProps) {
   // Combine skills with the same name
   const combinedSkills = useMemo(() => {
     return Object.values(
-      skills.reduce<Record<string, Skill>>(
-        (acc, skill) => {
-          const key = skill.name;
-          if (!acc[key]) {
-            acc[key] = { ...skill };
-            return acc;
-          }
+      skills.reduce<Record<string, Skill>>((acc, skill) => {
+        const key = skill.name;
+        if (!acc[key]) {
+          acc[key] = { ...skill };
           return acc;
-        },
-        {}
-      )
+        }
+        return acc;
+      }, {})
     );
   }, [skills]);
 
@@ -141,63 +136,62 @@ export function SkillsGrid({ skills }: SkillsGridProps) {
     <div>
       <Legend visibleCategories={visibleCategories} />
       {/* Skills grid */}
-        <div class="flex flex-wrap gap-2 overflow-x-auto sm:overflow-visible">
-          {combinedSkills.map((skill, idx) => {
-            const color = getCategoryColor(skill.category);
-            const isActive = activeSkill === idx;
-            return (
-              <div key={skill.name} class="relative">
-                <button
-                  ref={(el) => {
-                    pillRefs.current[idx] = el;
-                  }}
-                  type="button"
-                  class={`rounded-full px-3 py-1 text-sm font-medium transition focus:ring-2 focus:ring-offset-2 focus:outline-none ${color}`}
-                  aria-label={`${skill.name} skill pill`}
-                  aria-expanded={isActive}
-                  aria-controls={
-                    isActive ? `popover-${idx}` : undefined
-                  }
-                  aria-describedby={
-                    isActive ? `desc-${idx}` : undefined
-                  }
-                  tabIndex={0}
-                  onClick={() =>
-                    setActiveSkill(isActive ? null : idx)
-                  }
-                  onFocus={() => {}}
-                  onBlur={(e) => {
-                    setTimeout(() => {
-                      const active = document.activeElement;
-                      const pill = pillRefs.current[idx];
-                      const popover = popoverRef.current;
-                      if (
-                        popover &&
-                        pill &&
-                        active !== pill &&
-                        !popover.contains(active) &&
-                        active !== pill
-                      ) {
-                        setActiveSkill(null);
-                        pill.focus();
-                      }
-                    }, 10);
-                  }}
-                >
-                  {skill.name}
-                </button>
-                {isActive && (
-                  <SkillPopover
-                    skill={skill}
-                    idx={idx}
-                    popoverRef={popoverRef}
-                    pillRefs={pillRefs}
-                  />
-                )}
-              </div>
-            );
-          })}
-        </div>
+      <div class="flex flex-wrap gap-2 overflow-x-auto sm:overflow-visible">
+        {combinedSkills.map((skill, idx) => {
+          const color = getCategoryColor(skill.category);
+          const isActive = activeSkill === idx;
+          return (
+            <div key={skill.name} class="relative">
+              <button
+                ref={(el) => {
+                  pillRefs.current[idx] = el;
+                }}
+                type="button"
+                class={`rounded-full px-3 py-1 text-sm font-medium transition focus:ring-2 focus:ring-offset-2 focus:outline-none ${color}`}
+                aria-label={`${skill.name} skill pill`}
+                aria-expanded={isActive}
+                aria-controls={
+                  isActive ? `popover-${idx}` : undefined
+                }
+                aria-describedby={
+                  isActive ? `desc-${idx}` : undefined
+                }
+                tabIndex={0}
+                onClick={() =>
+                  setActiveSkill(isActive ? null : idx)
+                }
+                onBlur={() => {
+                  setTimeout(() => {
+                    const active = document.activeElement;
+                    const pill = pillRefs.current[idx];
+                    const popover = popoverRef.current;
+                    if (
+                      popover &&
+                      pill &&
+                      active !== pill &&
+                      !popover.contains(active) &&
+                      active !== pill
+                    ) {
+                      setActiveSkill(null);
+                      pill.focus();
+                    }
+                  }, 10);
+                }}
+              >
+                {skill.name}
+              </button>
+              {isActive && (
+                <SkillPopover
+                  skill={skill}
+                  idx={idx}
+                  popoverRef={popoverRef}
+                  pillRefs={pillRefs}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

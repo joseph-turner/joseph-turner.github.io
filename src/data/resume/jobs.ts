@@ -79,12 +79,7 @@ export const jobs: Job[] = [
       'Implemented A/B tested features resulting in 2%+ conversion rate increase',
       'Developed back-end-for-front-end service for search and taxonomy pages',
     ],
-    skills: [
-      'NextJS',
-      'React',
-      'ABTesting',
-      'BFF',
-    ],
+    skills: ['NextJS', 'React', 'ABTesting', 'BFF'],
   },
   {
     title: 'Senior Front End Developer',
@@ -123,11 +118,6 @@ export const jobs: Job[] = [
       'Cross-functional collaboration with design and backend teams',
       'UI/UX implementation',
     ],
-    skills: [
-      'HTML',
-      'CSS',
-      'JavaScript',
-      'UIUX',
-    ],
+    skills: ['HTML', 'CSS', 'JavaScript', 'UIUX'],
   },
 ];

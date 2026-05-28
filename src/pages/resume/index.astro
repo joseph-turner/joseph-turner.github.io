@@ -3,12 +3,12 @@ import Layout from '@layouts/Layout.astro';
 
 import ResumeTimeline from '../../components/ResumeTimeline.tsx';
 import { SkillsGrid } from '../../components/SkillsGrid';
-import { jobs } from './jobs.js';
-import { skills as skillsMap } from './skills';
+import { jobs } from '../../data/resume/jobs';
+import { skills as skillsMap } from '../../data/resume/skills';
 
 // Map job skill keys (strings) to canonical Skill objects for the SkillsGrid
 const skills = jobs.flatMap((job) =>
-  job.skills.map((s) => (typeof s === 'string' ? (skillsMap as any)[s] : s))
+  job.skills.map((skillKey) => skillsMap[skillKey])
 );
 ---
 

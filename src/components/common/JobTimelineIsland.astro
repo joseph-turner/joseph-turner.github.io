@@ -1,6 +1,6 @@
 ---
 // Vanilla JS Astro Island for timeline + modal
-import type { Job } from '../../pages/resume/jobs';
+import type { Job } from '../../data/resume/jobs';
 const { jobs = [] }: { jobs?: Job[] } = Astro.props;
 ---
 
@@ -69,7 +69,7 @@ const { jobs = [] }: { jobs?: Job[] } = Astro.props;
     </div>
   </div>
   <script>
-    import type { Job } from '../../pages/resume/jobs';
+    import type { Job } from '../../data/resume/jobs';
 
     document.addEventListener('DOMContentLoaded', function () {
       const timelineRoot = document.getElementById(

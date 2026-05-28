@@ -2,19 +2,26 @@ import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
 import { getCollection } from 'astro:content';
 
+import {
+  getBlogPath,
+  sortBlogPostsByDateDesc,
+} from '../lib/blog';
+
 export async function GET(context: APIContext) {
-  const posts = await getCollection('blog'); // assumes you’re using content collections
+  const posts = await getCollection('blog');
+  const sortedPosts = [...posts].sort(sortBlogPostsByDateDesc);
 
   return rss({
-    title: "Joseph's Blog",
-    description: "Frontend development insights and career updates",
-    site: context?.site ?? 'https://joseph-turner.github.io',
-    trailingSlash: false,
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: new Date(post.data.date),
+    description:
+      'Frontend development insights and career updates',
+    items: sortedPosts.map((post) => ({
       description: post.data.description,
-      link: `/blog/${post.slug}/`,
+      link: getBlogPath(post),
+      pubDate: post.data.date,
+      title: post.data.title,
     })),
+    site: context?.site ?? 'https://joseph-turner.github.io',
+    title: "Joseph's Blog",
+    trailingSlash: false,
   });
 }

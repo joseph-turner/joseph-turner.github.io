@@ -1,40 +1,26 @@
 ---
 import BlogPost from '@layouts/BlogPost.astro';
-import { getCollection } from 'astro:content';
+import {
+  type CollectionEntry,
+  getCollection,
+  render,
+} from 'astro:content';
+
+import { getBlogSlug } from '../../lib/blog';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => {
-    const raw = post.data.slug ?? post.slug ?? post.id;
-    const s = String(raw)
-      .replace(/\.(md|mdx)$/, '')
-      .split('/')
-      .pop();
-    return { params: { slug: s } };
-  });
+  return posts.map((post) => ({
+    params: { slug: getBlogSlug(post) },
+    props: { post },
+  }));
 }
 
-const { slug } = Astro.params;
-const posts = await getCollection('blog');
-const post = posts.find((p) => {
-  const raw = p.data.slug ?? p.slug ?? p.id;
-  const entrySlug = String(raw)
-    .replace(/\.(md|mdx)$/, '')
-    .split('/')
-    .pop();
-  return (
-    entrySlug === slug ||
-    p.data?.slug === slug ||
-    String(p.id) === slug
-  );
-});
+const { post } = Astro.props as {
+  post: CollectionEntry<'blog'>;
+};
 
-if (!post) {
-  throw new Error(`Post not found: ${slug}`);
-}
-
-// Render the markdown to get the Content component
-const rendered = await (post as any).render();
+const rendered = await render(post);
 const Content = rendered.Content;
 ---
 
